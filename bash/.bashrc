@@ -1,13 +1,13 @@
 # Prompt
-if [ -f /usr/local/bin/git-prompt.sh ]; then
-  . /usr/local/bin/git-prompt.sh
-fi
 export PS1='\
 \[\e]2;\]\u@\h:\w\[\a\]\
 \[\e]1;\]\W\[\a\]\
-\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\
-$(__git_ps1 " (%s)")\
-\n\$ '
+\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]'
+if [ -f /usr/local/bin/git-prompt.sh ]; then
+  . /usr/local/bin/git-prompt.sh
+  PS1=$PS1$(__git_ps1 " (%s)")
+fi
+PS1=$PS1'\n\$ '
 
 # \u: current user
 # \h: current host
