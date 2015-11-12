@@ -1,0 +1,3 @@
+# Use arrows to search history (via https://coderwall.com/p/oqtj8w)
+"\e[A": history-search-backward
+"\e[B": history-search-forward
