@@ -1,0 +1,113 @@
+# Tips:
+#   http://www.git-attitude.fr/2013/04/03/configuration-git/
+
+[user]
+    name = Ronan Amicel
+    email = ronan.amicel@gmail.com
+
+[color]
+    ui = auto
+
+[alias]
+    co = checkout
+    st = status
+    ci = commit
+    cia = commit --amend
+    ciad = !git commit --amend --date=\"$(LANG=C date)\"
+    cii = commit --allow-empty -m\"Initial commit\"
+
+    # Pull
+    pr = pull --rebase
+    prull = pull --rebase
+    poule = pull --rebase
+
+    # Push
+    pouche = push
+    pm = push origin master
+    pt = push --tags
+
+    # Add
+    ass = add
+    ap = add -p
+
+    # Unstage
+    rp = reset HEAD -p
+
+    # Work in progress
+    wip = commit -m\"Work in progress\"
+
+    # Commit all changes to a new branch, then switch back to the current branch
+    save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
+
+    # Branches
+    br = branch --color
+    recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+
+    # Log
+    l = log
+    lp = log -p
+    la = log -p -1
+
+    # My commits
+    me = log -p --author ronan.amicel
+
+    # Commits on this branch and not on master
+    lb = log HEAD --not master
+
+    # Parent commit
+    parent = log --pretty=%P -n 1
+
+    # Short log (via http://coderwall.com/p/euwpig)
+    l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit
+
+    # Graph log
+    lg = log --decorate=short --abbrev-commit --oneline --graph
+    lga = log --decorate=short --abbrev-commit --oneline --graph --all
+
+    # Diff
+    d = diff
+    dc = diff --cached
+
+    # Outgoing commits (hg-like)
+    out = !git log $(git rev-parse --abbrev-ref HEAD) --not origin/$(git rev-parse --abbrev-ref HEAD)
+
+    # Update master then rebase branch
+    prb = !sh -c 'export PREV=$(git rev-parse --abbrev-ref HEAD) && git co master && git pr && git co $PREV && git rebase master'
+    prbm = !sh -c 'export PREV=$(git rev-parse --abbrev-ref HEAD) && git co master && git pr && git co $PREV && git rebase master && git co master && git rebase $PREV'
+
+    # Show aliases
+    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+[diff]
+    mnemonicPrefix = true
+    wordRegex = .
+    algorithm = patience
+    renames = true
+
+[fetch]
+    recurseSubmodules = on-demand
+
+[grep]
+    extendedRegexp = true
+
+[log]
+    decorate = true
+    ; abbrevCommit = true
+
+[pull]
+    rebase = preserve
+
+[push]
+    default = simple
+
+[core]
+    excludesfile = /Users/ronan/.gitignore_global
+
+[status]
+    showuntrackedfiles = all
+
+[credential]
+    helper = osxkeychain
+
+[merge]
+    conflictstyle = diff3
