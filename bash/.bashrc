@@ -3,8 +3,9 @@ export PS1='\
 \[\e]2;\]\u@\h:\w\[\a\]\
 \[\e]1;\]\W\[\a\]\
 \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]'
-if [ -f /usr/local/bin/git-prompt.sh ]; then
-  . /usr/local/bin/git-prompt.sh
+GIT_PROMPT=/usr/local/etc/bash_completion.d/git-prompt.sh
+if [ -f $GIT_PROMPT ]; then
+  . $GIT_PROMPT
   PS1=$PS1$(__git_ps1 " (%s)")
 fi
 PS1=$PS1'\n\$ '
