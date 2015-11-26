@@ -41,6 +41,7 @@ tap "caskroom/versions"
 
 # OS X Apps
 cask "alfred"
+cask "cyberduck"
 cask "firefox"
 cask "flux"
 cask "gfxcardstatus"
