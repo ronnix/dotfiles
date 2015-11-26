@@ -33,6 +33,7 @@ brew bundle
 stow bash
 stow git
 stow pyenv
+stow virtualenvwrapper
 stow sublime
 
 
