@@ -23,6 +23,7 @@ sudo chown $USER: /opt/homebrew-cask/Caskroom
 
 # Install from Brewfile
 brew tap homebrew/bundle
+brew update
 brew bundle
 
 
