@@ -44,7 +44,7 @@ stow sublime
 
 # Install Salt
 brew install python swig zmq
-pip install salt
+pip install -U salt
 
 # Configure Salt (masterless)
 sudo mkdir -p /etc/salt /var/log/salt
