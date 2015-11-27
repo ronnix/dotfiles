@@ -26,6 +26,7 @@ brew "hub"
 brew "tig"
 brew "mercurial"
 brew "subversion"
+brew "homebrew/completions/vagrant-completion"
 
 # Python
 brew "pyenv"
