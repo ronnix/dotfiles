@@ -28,6 +28,9 @@ brew "mercurial"
 brew "subversion"
 brew "homebrew/completions/vagrant-completion"
 
+# Databases
+brew "postgresql"
+
 # Python
 brew "pyenv"
 brew "python"
