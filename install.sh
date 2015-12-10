@@ -43,7 +43,6 @@ stow sublime
 ##
 
 # Install Salt
-brew install python swig zmq
 pip install -U salt
 
 # Configure Salt (masterless)

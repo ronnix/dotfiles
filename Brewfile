@@ -27,9 +27,13 @@ brew "tig"
 brew "mercurial"
 brew "subversion"
 brew "homebrew/completions/vagrant-completion"
+brew "swig"
 
 # Databases
 brew "postgresql"
+
+# Libs
+brew "zmq"
 
 # Python
 brew "pyenv"
