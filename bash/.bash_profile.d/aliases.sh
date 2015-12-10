@@ -12,3 +12,8 @@ alias rehash="set +h"
 
 # Mercurial
 alias cdh='cd `hg root` && pwd'
+
+# Explain a shell command
+explain() {
+    open "http://explainshell.com/explain?cmd=$*"
+}
