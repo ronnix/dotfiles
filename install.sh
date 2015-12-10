@@ -2,6 +2,14 @@ set -e
 
 USER=$(whoami)
 
+
+##
+## OS X settings and tweaks
+##
+
+source osx-settings.sh
+
+
 ##
 ## Install apps using Homebrew
 ##
