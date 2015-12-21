@@ -33,6 +33,7 @@ brew "swig"
 brew "postgresql"
 
 # Libs
+brew "openssl"
 brew "zmq"
 
 # Python
