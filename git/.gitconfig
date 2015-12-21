@@ -69,7 +69,7 @@
     dc = diff --cached
 
     # Outgoing commits (hg-like)
-    out = !git log $(git rev-parse --abbrev-ref HEAD) --not origin/$(git rev-parse --abbrev-ref HEAD)
+    out = !git log $(git rev-parse --abbrev-ref HEAD) --not origin/$(git rev-parse --abbrev-ref HEAD) --
 
     # Update master then rebase branch
     prb = !sh -c 'export PREV=$(git rev-parse --abbrev-ref HEAD) && git co master && git pr && git co $PREV && git rebase master'
