@@ -18,6 +18,7 @@ brew "ssh-copy-id"
 brew "stow"
 brew "tmux"
 brew "tree"
+brew "watchman"
 brew "wget"
 
 # Dev tools
