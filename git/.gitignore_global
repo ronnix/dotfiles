@@ -1,5 +1,6 @@
 *~
 *.sublime-*
+*.pyc
 .DS_Store
 .cache
 .codeintel
