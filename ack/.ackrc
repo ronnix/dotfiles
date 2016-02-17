@@ -1,0 +1,17 @@
+# Always sort the files
+--sort-files
+
+# Always color, even if piping to a another program
+--color
+
+# Use less as my pager
+--pager=less -FRX
+
+# Do not search in some Python directories
+--ignore-dir=is:.hypothesis
+--ignore-dir=is:.tox
+--ignore-dir=.egg-info
+
+# Ignore Sublime Text config files
+--ignore-file=ext:sublime-project
+--ignore-file=ext:sublime-workspace

@@ -39,6 +39,7 @@ brew bundle
 ## Manage dotfiles with GNU Stow
 ##
 
+stow ack
 stow bash
 stow git
 stow pyenv
