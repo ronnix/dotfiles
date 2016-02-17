@@ -1,6 +1,7 @@
 # Base utils
 brew "ack"
 brew "bash-completion"
+brew "colordiff"
 brew "coreutils"
 brew "dos2unix"
 brew "gawk"
