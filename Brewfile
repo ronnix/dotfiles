@@ -33,6 +33,7 @@ brew "phantomjs"
 brew "chromedriver"
 brew "homebrew/completions/vagrant-completion"
 brew "swig"
+brew "terraform"
 
 # Databases
 brew "postgresql"
