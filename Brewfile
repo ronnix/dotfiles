@@ -24,6 +24,11 @@ brew "tree"
 brew "watchman"
 brew "wget"
 
+# Bash completions
+tap "homebrew/completions"
+brew "homebrew/completions/fabric-completion"
+brew "homebrew/completions/vagrant-completion"
+
 # Dev tools
 brew "git"
 brew "hub"
@@ -32,7 +37,6 @@ brew "mercurial"
 brew "subversion"
 brew "phantomjs"
 brew "chromedriver"
-brew "homebrew/completions/vagrant-completion"
 brew "swig"
 brew "terraform"
 
