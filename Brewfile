@@ -7,7 +7,7 @@ brew "dos2unix"
 brew "gawk"
 brew "gnu-sed"
 brew "gnu-tar"
-brew "gpg"
+brew "gnupg"
 brew "graphviz"
 brew "htop-osx"
 brew "jq"
@@ -47,7 +47,7 @@ brew "sqlite"
 
 # Libs
 brew "openssl"
-brew "zmq"
+brew "zeromq"
 
 # Python
 brew "pyenv"
