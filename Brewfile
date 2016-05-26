@@ -39,6 +39,7 @@ brew "phantomjs"
 brew "chromedriver"
 brew "swig"
 brew "terraform"
+brew "httpie"
 
 # Databases
 brew "postgresql"
