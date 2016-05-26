@@ -42,6 +42,7 @@ brew "terraform"
 
 # Databases
 brew "postgresql"
+brew "sqlite"
 
 # Libs
 brew "openssl"
