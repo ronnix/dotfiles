@@ -15,3 +15,5 @@
 # Ignore Sublime Text config files
 --ignore-file=ext:sublime-project
 --ignore-file=ext:sublime-workspace
+
+--ignore-dir=.cache
