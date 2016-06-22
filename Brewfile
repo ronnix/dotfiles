@@ -28,6 +28,8 @@ brew "wget"
 tap "homebrew/completions"
 brew "homebrew/completions/fabric-completion"
 brew "homebrew/completions/vagrant-completion"
+brew "homebrew/completions/docker-completion"
+brew "homebrew/completions/docker-compose-completion"
 
 # Dev tools
 brew "git"
