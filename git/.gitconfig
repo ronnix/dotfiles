@@ -70,6 +70,7 @@
 
     # Outgoing commits (hg-like)
     out = !git log $(git rev-parse --abbrev-ref HEAD) --not origin/$(git rev-parse --abbrev-ref HEAD) --
+    outp = !git log -p $(git rev-parse --abbrev-ref HEAD) --not origin/$(git rev-parse --abbrev-ref HEAD) --
 
     # Update master then rebase branch
     prb = !sh -c 'export PREV=$(git rev-parse --abbrev-ref HEAD) && git co master && git pr && git co $PREV && git rebase master'
