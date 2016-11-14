@@ -2,8 +2,11 @@
 *.sublime-*
 *.pyc
 .DS_Store
+.ackrc
 .cache
 .codeintel
 .ipynb_checkpoints
 .tox
 .vagrant
+*.orig
+*.rej
