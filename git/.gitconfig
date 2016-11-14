@@ -80,7 +80,7 @@
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 
 [diff]
-    mnemonicPrefix = true
+    noprefix = true
     wordRegex = .
     algorithm = patience
     renames = true
@@ -93,6 +93,7 @@
 
 [log]
     decorate = true
+    noprefix = true
     ; abbrevCommit = true
 
 [pull]
