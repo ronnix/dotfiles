@@ -11,6 +11,8 @@
 --ignore-dir=is:.hypothesis
 --ignore-dir=is:.tox
 --ignore-dir=.egg-info
+--ignore-dir=build
+--ignore-dir=dist
 
 # Ignore Sublime Text config files
 --ignore-file=ext:sublime-project
