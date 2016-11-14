@@ -103,7 +103,7 @@
     default = simple
 
 [core]
-    excludesfile = /Users/ronan/.gitignore_global
+    excludesfile = ~/.gitignore_global
 
 [status]
     showuntrackedfiles = all
