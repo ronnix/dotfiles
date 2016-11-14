@@ -61,8 +61,8 @@
     l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit
 
     # Graph log
-    lg = log --decorate=short --abbrev-commit --oneline --graph
-    lga = log --decorate=short --abbrev-commit --oneline --graph --all
+    lg = log --abbrev-commit --oneline --graph
+    lga = log --abbrev-commit --oneline --graph --all
 
     # Diff
     d = diff
