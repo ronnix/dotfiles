@@ -34,7 +34,6 @@ brew "homebrew/completions/docker-compose-completion"
 # Dev tools
 brew "git"
 brew "hub"
-brew "tig"
 brew "mercurial"
 brew "subversion"
 brew "phantomjs"
