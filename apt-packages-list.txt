@@ -1,0 +1,42 @@
+# Base utils
+ack-grep
+bash-completion
+colordiff
+coreutils
+curl
+dos2unix
+gawk
+gnupg
+graphviz
+htop
+jq
+mosh
+moreutils
+mtr
+nmap
+psmisc
+pwgen
+stow
+tmux
+tree
+vim
+wget
+zsh
+
+# Bash completion
+bash-completion
+python-optcomplete
+python3-argcomplete
+
+# Development
+build-essential
+git
+httpie
+mercurial
+phantomjs
+python-dev
+python-jedi
+python-rope
+subversion
+vagrant
+

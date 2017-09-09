@@ -4,8 +4,10 @@ alias ll='ls -lhG'
 alias diff='colordiff'
 
 # Linux-isms
-alias ldd="otool -L"
-alias rehash="set +h"
+if [ $(uname -s) == "Darwin" ]; then
+  alias ldd="otool -L"
+  alias rehash="set +h"
+fi
 
 # Explain a shell command
 explain() {
