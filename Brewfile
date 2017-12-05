@@ -57,7 +57,6 @@ brew "python"
 brew "node"
 
 # Brew Cask
-brew "brew-cask"
 tap "caskroom/cask"
 tap "caskroom/versions"
 
