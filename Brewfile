@@ -25,11 +25,10 @@ brew "watchman"
 brew "wget"
 
 # Bash completions
-tap "homebrew/completions"
-brew "homebrew/completions/fabric-completion"
-brew "homebrew/completions/vagrant-completion"
-brew "homebrew/completions/docker-completion"
-brew "homebrew/completions/docker-compose-completion"
+brew "fabric-completion"
+brew "vagrant-completion"
+brew "docker-completion"
+brew "docker-compose-completion"
 
 # Dev tools
 brew "git"
