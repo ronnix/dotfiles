@@ -40,7 +40,7 @@ brew bundle
 ##
 
 # Install Salt
-pip install -U salt
+pip3 install -U salt
 
 # Configure Salt (masterless)
 sudo mkdir -p /etc/salt /var/log/salt
