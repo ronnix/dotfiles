@@ -29,6 +29,7 @@ fi
 stow ack
 stow bash
 stow git
+stow pip
 stow pyenv
 stow virtualenvwrapper
 stow sublime
