@@ -31,15 +31,11 @@ brew "docker-completion"
 brew "docker-compose-completion"
 
 # Dev tools
-brew "git"
-brew "hub"
-brew "mercurial"
-brew "subversion"
-brew "phantomjs"
 brew "chromedriver"
-brew "swig"
-brew "terraform"
+brew "git"
 brew "httpie"
+brew "hub"
+brew "phantomjs"
 
 # Databases
 brew "postgresql"
