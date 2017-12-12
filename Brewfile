@@ -59,6 +59,7 @@ tap "caskroom/versions"
 # OS X Apps
 cask "alfred"
 cask "cyberduck"
+cask "docker"
 cask "firefox"
 cask "flux"
 cask "freemind"
