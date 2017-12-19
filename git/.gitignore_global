@@ -10,3 +10,4 @@
 .vagrant
 *.orig
 *.rej
+venv
