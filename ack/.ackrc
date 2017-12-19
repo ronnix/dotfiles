@@ -13,6 +13,7 @@
 --ignore-dir=.egg-info
 --ignore-dir=build
 --ignore-dir=dist
+--ignore-dir=venv
 
 # Ignore Sublime Text config files
 --ignore-file=ext:sublime-project
