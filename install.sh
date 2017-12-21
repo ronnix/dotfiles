@@ -31,5 +31,6 @@ stow bash
 stow git
 stow pip
 stow pyenv
+stow python
 stow virtualenvwrapper
 stow sublime
