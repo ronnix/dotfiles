@@ -16,6 +16,18 @@ esac
 
 
 #
+# Install multiple Python versions with pyenv
+#
+VERSIONS="2.7.14 3.6.3"
+for version in $VERSIONS; do
+    CFLAGS="-I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include" \
+    LDFLAGS="-L$(brew --prefix openssl)/lib" \
+    pyenv install --skip-existing $version
+done
+pyenv global $VERSIONS
+
+
+#
 # Rename existing .bashrc to avoid conflicts
 #
 if [ -f ~/.bashrc ]; then
