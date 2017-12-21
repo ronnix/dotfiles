@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"BetterFindBuffer",
 		"Bracketeer",
 		"Browser Refresh",
 		"ColorPicker",
