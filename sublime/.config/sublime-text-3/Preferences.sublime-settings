@@ -43,10 +43,8 @@
 	"font_face": "Menlo",
 	"font_size": 14,
 	"highlight_line": true,
-	"ignored_packages":
-	[
+	"ignored_packages": [
 		"Vintage",
-		"Markdown",
 		"RestructuredText"
 	],
 	"paths":
