@@ -41,8 +41,25 @@ fi
 stow ack
 stow bash
 stow git
+stow go
 stow pip
 stow pyenv
 stow python
 stow virtualenvwrapper
 stow sublime
+
+
+#
+# Reload configuration
+#
+source $HOME/.bash_profile
+
+
+#
+# Install Go packages
+#
+go get github.com/golang/lint/golint
+go get golang.org/x/tools/cmd/godoc
+go get golang.org/x/tools/cmd/goimports
+go get golang.org/x/tools/cmd/oracle
+go get golang.org/x/tools/cmd/vet

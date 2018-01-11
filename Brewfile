@@ -52,6 +52,10 @@ brew "python"
 # JavaScript
 brew "node"
 
+# Go
+brew "go"
+brew "dep"
+
 # Brew Cask
 tap "caskroom/cask"
 tap "caskroom/versions"
