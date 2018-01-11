@@ -52,19 +52,6 @@
 		"RestructuredText"
 	],
 	"overlay_scroll_bars": "enabled",
-	"paths":
-	{
-		"linux":
-		[
-		],
-		"osx":
-		[
-			"/usr/local/var/lib/pyenv/versions/2.7.10/bin"
-		],
-		"windows":
-		[
-		]
-	},
 	"rulers":
 	[
 		72,
