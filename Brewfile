@@ -56,6 +56,9 @@ brew "node"
 brew "go"
 brew "dep"
 
+# Haskell
+brew "ghc"
+
 # Brew Cask
 tap "caskroom/cask"
 tap "caskroom/versions"
