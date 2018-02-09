@@ -10,7 +10,12 @@
 
 [alias]
     co = checkout
+
+    # Status
     st = status
+    sts = status --short --untracked-files=no
+
+    # Commit
     ci = commit
     cia = commit --amend
     ciad = !git commit --amend --date=\"$(LANG=C date)\"
