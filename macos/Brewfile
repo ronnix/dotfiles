@@ -47,7 +47,6 @@ brew "zeromq"
 
 # Python
 brew "pyenv"
-brew "python"
 
 # JavaScript
 brew "node"
