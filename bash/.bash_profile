@@ -1,13 +1,4 @@
-
-# Homebrew (macOS)
-if hash brew 2>/dev/null; then
-  if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-  fi
-  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-fi
-
-export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
+source ~/.bash_functions
 
 for script in ~/.bash_profile.d/*.sh; do
     if [ -x "${script}" ]; then
