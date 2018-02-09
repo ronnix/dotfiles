@@ -1,3 +1,4 @@
 export GOPATH=~/dev/go
-mkdir -p $GOPATH
-export PATH=$PATH:$GOPATH/bin
+mkdir -p "$GOPATH/bin"
+
+pathappend "$GOPATH/bin"
