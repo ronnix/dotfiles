@@ -6,6 +6,7 @@
 .cache
 .codeintel
 .ipynb_checkpoints
+.pytest_cache
 .tox
 .vagrant
 *.orig
