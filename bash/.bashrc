@@ -221,3 +221,6 @@ if [ -f /etc/bash_preexec ]; then
 else
   export PROMPT_COMMAND='history -a'
 fi
+
+# Enable fzf (command-line fuzzy finder)
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
