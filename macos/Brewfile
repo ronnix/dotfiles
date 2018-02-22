@@ -50,9 +50,6 @@ brew "pyenv"
 brew "pyenv-virtualenv"
 brew "pyenv-virtualenvwrapper"
 
-# JavaScript
-brew "node"
-
 # Go
 brew "go"
 brew "dep"
