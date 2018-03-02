@@ -1,3 +1,7 @@
+if [ "$(uname -s)" == "Darwin" ]; then
+    brew cask install sublime-text
+fi
+
 stow sublime
 
 # Add symbolic link on macOS
