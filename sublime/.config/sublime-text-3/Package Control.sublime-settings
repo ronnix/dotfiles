@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"Anaconda",
+		"ApplySyntax",
 		"BetterFindBuffer",
 		"Bracketeer",
 		"Browser Refresh",
