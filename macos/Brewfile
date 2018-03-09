@@ -32,9 +32,7 @@ brew "docker-compose-completion"
 
 # Dev tools
 brew "chromedriver"
-brew "git"
 brew "httpie"
-brew "hub"
 brew "phantomjs"
 
 # Databases
