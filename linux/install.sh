@@ -1,4 +1,4 @@
-set -e
+#!/bin/bash -e
 
 # Install APT packages
 sudo apt-get install --yes $(egrep -v '^(#|$)' apt-packages-list.txt)

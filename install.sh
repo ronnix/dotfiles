@@ -1,4 +1,4 @@
-set -o errexit
+#!/bin/bash -e
 
 #
 # Run platform-specific script
@@ -11,7 +11,7 @@ case $(uname -s) in
     pushd macos
     ;;
 esac
-source ./install.sh
+./install.sh
 popd
 
 
@@ -19,6 +19,6 @@ popd
 # Extra install steps
 #
 for script in install.sh.d/*.sh; do
-  echo ${script}
-  source ${script}
+  echo "${script}"
+  "${script}"
 done

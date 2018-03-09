@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 #
 # Rename existing .bashrc to avoid conflicts
 #

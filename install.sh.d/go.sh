@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 #
 # Install and run bash profile fragment
 #

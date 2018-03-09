@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 # See: https://yarnpkg.com/en/docs/install
 
 if [ "$(uname -s)" == "Darwin" ]; then
