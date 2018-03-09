@@ -53,6 +53,11 @@
 		"RestructuredText",
 		"Vintage"
 	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
 	"overlay_scroll_bars": "enabled",
 	"rulers":
 	[
