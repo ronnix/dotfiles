@@ -2,6 +2,7 @@
 
 if [ "$(uname -s)" == "Darwin" ]; then
     brew cask install sublime-text
+    brew install shellcheck
 fi
 
 stow sublime
