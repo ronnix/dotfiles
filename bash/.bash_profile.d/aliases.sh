@@ -13,3 +13,9 @@ fi
 explain() {
     open "http://explainshell.com/explain?cmd=$*"
 }
+
+# Combined mkdir + cd
+mkcd ()
+{
+    mkdir -p -- "$1" && cd -P -- "$1" || return
+}
