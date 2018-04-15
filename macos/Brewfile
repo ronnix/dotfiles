@@ -43,11 +43,6 @@ brew "sqlite"
 brew "openssl"
 brew "zeromq"
 
-# Python
-brew "pyenv"
-brew "pyenv-virtualenv"
-brew "pyenv-virtualenvwrapper"
-
 # Go
 brew "go"
 brew "dep"

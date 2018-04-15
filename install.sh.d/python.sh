@@ -1,6 +1,13 @@
 #!/bin/bash -e
 
 #
+# Install pyenv
+#
+if [ "$(uname -s)" == "Darwin" ]; then
+    brew install readline openssl xz pyenv pyenv-virtualenv pyenv-virtualenvwrapper
+fi
+
+#
 # Install config files
 #
 stow pip
@@ -13,10 +20,8 @@ source ~/.bash_profile.d/pyenv.sh
 #
 # Install multiple Python versions with pyenv
 #
-VERSIONS="2.7.14 3.6.4"
+VERSIONS="3.6.5 2.7.14"
 for version in $VERSIONS; do
-    CFLAGS="-I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include" \
-    LDFLAGS="-L$(brew --prefix openssl)/lib" \
     pyenv install --skip-existing $version
 done
 pyenv global $VERSIONS
