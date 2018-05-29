@@ -222,5 +222,8 @@ else
   export PROMPT_COMMAND='history -a'
 fi
 
-# Enable fzf (command-line fuzzy finder)
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+for script in ~/.bashrc.d/*.sh; do
+    if [ -x "${script}" ]; then
+        source ${script}
+    fi
+done
