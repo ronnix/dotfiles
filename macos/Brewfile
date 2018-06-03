@@ -21,6 +21,7 @@ brew "ssh-copy-id"
 brew "stow"
 brew "tmux"
 brew "tree"
+brew "unrar"
 brew "watchman"
 brew "wget"
 
