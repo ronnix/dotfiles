@@ -34,6 +34,7 @@ brew "docker-compose-completion"
 brew "chromedriver"
 brew "httpie"
 brew "phantomjs"
+brew "shellcheck"
 
 # Databases
 brew "postgresql"

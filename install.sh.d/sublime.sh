@@ -1,8 +1,19 @@
 #!/bin/bash -e
 
+# Install Sublime Text
 if [ "$(uname -s)" == "Darwin" ]; then
-    brew cask install sublime-text
-    brew install shellcheck
+    if ! brew cask ls --versions sublime-text >/dev/null ; then
+        brew cask install sublime-text
+    fi
+fi
+
+# Install Package Control
+if [ "$(uname -s)" == "Darwin" ]; then
+    CONFIG_DIR="${HOME}/Library/Application Support/Sublime Text 3"
+    PACKAGE_CONTROL="${CONFIG_DIR}/Installed Packages/Package Control.sublime-package"
+    if [ ! -f "$PACKAGE_CONTROL" ]; then
+        curl "https://packagecontrol.io/Package%20Control.sublime-package" -o "$PACKAGE_CONTROL"
+    fi
 fi
 
 stow sublime
