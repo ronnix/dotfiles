@@ -33,6 +33,7 @@ brew "docker-compose-completion"
 
 # Dev tools
 brew "chromedriver"
+brew "geckodriver"
 brew "httpie"
 brew "phantomjs"
 brew "shellcheck"
