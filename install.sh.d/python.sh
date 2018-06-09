@@ -26,6 +26,11 @@ for version in $VERSIONS; do
 done
 pyenv global $VERSIONS
 
+#
+# Install some tools system-wide
+#
+python3.6 -m pip install --upgrade black
 python3.6 -m pip install --upgrade flake8
+python3.6 -m pip install --upgrade mypy
+python3.6 -m pip install --upgrade pylint
 python3.6 -m pip install --upgrade tox
-# python3.6 -m pip install --upgrade mypy-lang
