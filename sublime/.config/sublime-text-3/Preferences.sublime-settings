@@ -28,6 +28,7 @@
 		"*.sqlite",
 		"*.sublime-workspace",
 		"*.suo",
+		"*.zip",
 		".DS_Store"
 	],
 	"folder_exclude_patterns":
