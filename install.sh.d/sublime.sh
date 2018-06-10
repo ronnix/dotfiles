@@ -5,6 +5,12 @@ if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew cask ls --versions sublime-text >/dev/null ; then
         brew cask install sublime-text
     fi
+elif [ "$(uname -s)" == "Linux" ]; then
+    sudo apt-get update
+    sudo apt install --yes software-properties-common
+    sudo add-apt-repository --yes "deb https://download.sublimetext.com/ apt/dev/"
+    sudo apt-get update
+    sudo apt-get install sublime-text
 fi
 
 # Install Package Control

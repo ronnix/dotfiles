@@ -46,7 +46,6 @@ phantomjs
 python-dev
 python-jedi
 python-rope
-sublime-text-installer
 subversion
 vagrant
 
