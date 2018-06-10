@@ -5,14 +5,14 @@
 #
 case $(uname -s) in
   Linux)
-    pushd linux
+    pushd linux >/dev/null
     ;;
   Darwin)
-    pushd macos
+    pushd macos >/dev/null
     ;;
 esac
 ./install.sh
-popd
+popd >/dev/null
 
 
 #
