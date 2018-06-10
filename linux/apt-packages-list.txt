@@ -39,6 +39,7 @@ transmission-gtk
 # Development
 build-essential
 git
+golang-1.10
 httpie
 mercurial
 phantomjs
