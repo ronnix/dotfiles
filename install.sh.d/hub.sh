@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 if [ "$(uname -s)" == "Linux" ]; then
 
     VERSION=2.4.0

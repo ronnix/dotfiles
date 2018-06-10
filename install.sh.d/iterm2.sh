@@ -1,4 +1,5 @@
 #!/bin/bash -e
+
 if [ "$(uname -s)" == "Darwin" ]; then
 
 	# Link to config file

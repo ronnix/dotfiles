@@ -1,9 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash -e
 
 # Inspiration: https://mths.be/osx
-
-set -e
-
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
