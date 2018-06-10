@@ -29,6 +29,7 @@ pyenv global $VERSIONS
 #
 # Install some tools system-wide
 #
+python3.6 -m pip install --upgrade pip
 python3.6 -m pip install --upgrade black
 python3.6 -m pip install --upgrade flake8
 python3.6 -m pip install --upgrade mypy
