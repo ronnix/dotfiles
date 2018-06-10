@@ -17,6 +17,7 @@ nmap
 psmisc
 pwgen
 stow
+terminator
 tmux
 tree
 vim
@@ -28,6 +29,13 @@ bash-completion
 python-optcomplete
 python3-argcomplete
 
+# Apps
+chromium-browser
+chromium-chromedriver
+firefox
+handbrake
+transmission-gtk
+
 # Development
 build-essential
 git
@@ -37,6 +45,7 @@ phantomjs
 python-dev
 python-jedi
 python-rope
+sublime-text-installer
 subversion
 vagrant
 
