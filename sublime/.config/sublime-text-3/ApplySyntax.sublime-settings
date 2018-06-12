@@ -19,5 +19,23 @@
 
     // Put your custom syntax rules here:
     "syntaxes": [
+        {
+            "syntax": "Dockerfile",
+            "rules": [
+                {"file_path": ".*Dockerfile.*"}
+            ]
+        },
+        {
+            "syntax": "JavaScript/JSON",
+            "rules": [
+                {"file_path": ".*/Pipfile\\.lock$"}
+            ]
+        },
+        {
+            "syntax": "TOML/TOML",
+            "rules": [
+                {"file_path": ".*/Pipfile$"}
+            ]
+        }
     ]
 }
