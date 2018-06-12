@@ -1,9 +1,15 @@
 #!/bin/bash -e
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    brew install git
-    brew install hub
-    brew install zaquestion/tap/lab
+    if ! brew ls --versions git >/dev/null ; then
+        brew install git
+    fi
+    if ! brew ls --versions hub >/dev/null ; then
+        brew install hub
+    fi
+    if ! brew ls --versions zaquestion/tap/lab >/dev/null ; then
+        brew install zaquestion/tap/lab
+    fi
 fi
 
 stow git

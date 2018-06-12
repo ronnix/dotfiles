@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    brew install fzf
+    if ! brew ls --versions fzf >/dev/null ; then
+        brew install fzf
+    fi
     stow fzf
 fi
