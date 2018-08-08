@@ -36,7 +36,7 @@ if which pyenv ; then
     #
     # Install multiple Python versions with pyenv
     #
-    VERSIONS="3.6.5 2.7.14"
+    VERSIONS="3.7.0 3.6.6 2.7.15"
     for version in $VERSIONS; do
         pyenv install --skip-existing $version
     done
@@ -45,11 +45,11 @@ if which pyenv ; then
     #
     # Install some tools system-wide
     #
-    python3.6 -m pip install --upgrade pip
-    python3.6 -m pip install --upgrade black
-    python3.6 -m pip install --upgrade flake8
-    python3.6 -m pip install --upgrade mypy
-    python3.6 -m pip install --upgrade pylint
-    python3.6 -m pip install --upgrade tox
+    python3.7 -m pip install --upgrade pip
+    python3.7 -m pip install --upgrade black
+    python3.7 -m pip install --upgrade flake8
+    python3.7 -m pip install --upgrade mypy
+    python3.7 -m pip install --upgrade pylint
+    python3.7 -m pip install --upgrade tox
 
 fi
