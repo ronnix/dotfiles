@@ -4,5 +4,7 @@ except ImportError:
     print("Module readline not available.")
 else:
     import rlcompleter
-    readline.parse_and_bind("tab: complete")        # for GNU readline
-    readline.parse_and_bind("bind ^I rl_complete")  # for libedit
+    if "libedit" in readline.__doc__:
+        readline.parse_and_bind("bind ^I rl_complete")  # libedit (macOS)
+    else:
+        readline.parse_and_bind("tab: complete")        # GNU readline
