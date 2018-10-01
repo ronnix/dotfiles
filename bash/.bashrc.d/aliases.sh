@@ -19,3 +19,6 @@ mkcd ()
 {
     mkdir -p -- "$1" && cd -P -- "$1" || return
 }
+
+# Add all SSH keys
+alias ssh-add-all='find ~/.ssh -name 'id_rsa*' | egrep -v ".pub$" | xargs ssh-add'
