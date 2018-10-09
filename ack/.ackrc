@@ -9,6 +9,8 @@
 
 # Do not search in some Python directories
 --ignore-dir=is:.hypothesis
+--ignore-dir=is:.mypy_cache
+--ignore-dir=is:.pytest_cache
 --ignore-dir=is:.tox
 --ignore-dir=.egg-info
 --ignore-dir=build
@@ -20,3 +22,4 @@
 --ignore-file=ext:sublime-workspace
 
 --ignore-dir=.cache
+--ignore-dir=.web_cache
