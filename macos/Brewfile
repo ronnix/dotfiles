@@ -27,6 +27,7 @@ brew "tree"
 brew "unrar"
 brew "watchman"
 brew "wget"
+brew "wireguard-tools"
 
 # Bash completions
 brew "fabric-completion"
