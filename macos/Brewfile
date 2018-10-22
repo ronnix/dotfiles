@@ -28,6 +28,7 @@ brew "unrar"
 brew "watchman"
 brew "wget"
 brew "wireguard-tools"
+brew "wrk"
 
 # Bash completions
 brew "fabric-completion"
