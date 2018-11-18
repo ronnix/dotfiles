@@ -14,3 +14,6 @@ elif [ "$(uname -s)" == "Linux" ]; then
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     sudo apt-get update && sudo apt-get install --yes yarn
 fi
+
+# Prettier code formatter (https://prettier.io)
+npm install --global prettier
