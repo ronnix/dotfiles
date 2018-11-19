@@ -64,7 +64,7 @@ tap "caskroom/versions"
 
 # OS X Apps
 cask "alfred"
-cask "brave"
+cask "brave-browser"
 cask "chromium"
 cask "cyberduck"
 cask "docker"
