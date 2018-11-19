@@ -40,7 +40,6 @@ brew "docker-compose-completion"
 brew "chromedriver"
 brew "geckodriver"
 brew "httpie"
-brew "phantomjs"
 brew "shellcheck"
 
 # Databases
