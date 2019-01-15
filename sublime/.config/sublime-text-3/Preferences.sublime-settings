@@ -66,9 +66,7 @@
 	"overlay_scroll_bars": "enabled",
 	"rulers":
 	[
-		72,
-		79,
-		99
+		88
 	],
 	"show_encoding": true,
 	"show_line_endings": true,
