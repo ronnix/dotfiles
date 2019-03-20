@@ -36,7 +36,7 @@ if which pyenv ; then
     #
     # Install multiple Python versions with pyenv
     #
-    VERSIONS="3.7.0 3.6.6 2.7.15"
+    VERSIONS="3.7.2 3.6.8 2.7.15"
     for version in $VERSIONS; do
         pyenv install --skip-existing $version
     done
