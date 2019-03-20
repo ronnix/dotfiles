@@ -45,6 +45,7 @@
 		"sublime-github",
 		"SublimeCodeIntel",
 		"SublimeLinter",
+		"SublimeLinter-contrib-mypy",
 		"SublimeLinter-contrib-scss-lint",
 		"SublimeLinter-flake8",
 		"SublimeLinter-pylint",
