@@ -67,5 +67,6 @@ if which pyenv ; then
     python3.7 -m pip install --upgrade mypy
     python3.7 -m pip install --upgrade pylint
     python3.7 -m pip install --upgrade tox
+    python3.7 -m pip install --upgrade virtualenvwrapper
 
 fi
