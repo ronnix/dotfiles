@@ -4,7 +4,7 @@
     [
         "E309"
     ],
-    "pep8_max_line_length": 79,
+    "pep8_max_line_length": 88,
     "python_interpreter": "python3",
     "test_command": "pytest"
 }
