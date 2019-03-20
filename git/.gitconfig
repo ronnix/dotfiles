@@ -41,6 +41,9 @@
     # Work in progress
     wip = commit -m\"Work in progress\"
 
+    # Fixup
+    fixup = "!f() { msg=\"fixup ${*}\"; git commit -m\"$msg\"; }; f"
+
     # Commit all changes to a new branch, then switch back to the current branch
     save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
 
