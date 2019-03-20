@@ -13,3 +13,4 @@
 *.orig
 *.rej
 venv
+prof/
