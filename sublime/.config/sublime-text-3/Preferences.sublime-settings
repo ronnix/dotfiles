@@ -20,6 +20,7 @@
 		"*.o",
 		"*.obj",
 		"*.pdb",
+		"*.prof",
 		"*.psd",
 		"*.pyc",
 		"*.pyo",
@@ -44,7 +45,8 @@
 		".vagrant",
 		".tox",
 		"*.egg-info",
-		"node_modules"
+		"node_modules",
+		"prof"
 	],
 	"font_face": "Menlo",
 	"font_options":
