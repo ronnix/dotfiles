@@ -47,6 +47,7 @@ brew "postgresql"
 brew "sqlite"
 
 # Libs
+brew "libxmlsec1"
 brew "openssl"
 brew "zeromq"
 
