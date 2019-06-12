@@ -37,6 +37,7 @@ brew "docker-completion"
 brew "docker-compose-completion"
 
 # Dev tools
+brew "awscli"
 brew "chromedriver"
 brew "geckodriver"
 brew "httpie"
