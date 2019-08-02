@@ -25,6 +25,7 @@ fi
 # Install config files
 #
 stow pip
+stow pipx
 stow pyenv
 stow python
 stow virtualenvwrapper
@@ -58,15 +59,26 @@ if which pyenv ; then
     done
     pyenv global $VERSIONS
 
-    #
-    # Install some tools system-wide
-    #
-    python3.7 -m pip install --upgrade pip
-    python3.7 -m pip install --upgrade black
-    python3.7 -m pip install --upgrade flake8
-    python3.7 -m pip install --upgrade mypy
-    python3.7 -m pip install --upgrade pylint
-    python3.7 -m pip install --upgrade tox
-    python3.7 -m pip install --upgrade virtualenvwrapper
-
 fi
+
+#
+# Upgrade pip
+#
+python3.7 -m pip install --upgrade pip
+
+#
+# Install pipx
+#
+python3.7 -m pip install pipx
+
+#
+# Install some tools system-wide with pipx
+#
+export PATH=$HOME/.local/bin:$PATH
+pipx install black
+pipx install flake8
+pipx install isort
+pipx install mypy
+pipx install pylint
+pipx install tox
+pipx install virtualenvwrapper

@@ -1,4 +1,4 @@
 #!/bin/bash
-if pyenv which virtualenvwrapper.sh >/dev/null ; then
-    source $(pyenv which virtualenvwrapper.sh)
+if [ -f "$HOME/.local/bin/virtualenvwrapper.sh" ] ; then
+    source "$HOME/.local/bin/virtualenvwrapper.sh"
 fi
