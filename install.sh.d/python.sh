@@ -75,7 +75,7 @@ python3.7 -m pip install pipx
 # Install some tools system-wide with pipx
 #
 export PATH=$HOME/.local/bin:$PATH
-pipx install black
+pipx install black[d]
 pipx install flake8
 pipx install isort
 pipx install mypy
