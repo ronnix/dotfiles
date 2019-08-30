@@ -3,12 +3,14 @@
 *.pyc
 .DS_Store
 .ackrc
+.ash_history
 .cache
 .codeintel
 .ipynb_checkpoints
 .mypy_cache
 .project
 .pytest_cache
+.python_history
 .tox
 .vagrant
 *.orig
