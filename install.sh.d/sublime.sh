@@ -7,8 +7,9 @@ if [ "$(uname -s)" == "Darwin" ]; then
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
     sudo apt-get update
-    sudo apt install --yes software-properties-common
-    sudo add-apt-repository --yes "deb https://download.sublimetext.com/ apt/dev/"
+    sudo apt install --yes software-properties-common wget
+    sudo add-apt-repository --yes "deb https://download.sublimetext.com/ apt/stable/"
+    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
     sudo apt-get update
     sudo apt-get install sublime-text
 fi

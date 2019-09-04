@@ -19,6 +19,14 @@ if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions pyenv-virtualenvwrapper >/dev/null ; then
         brew install pyenv-virtualenvwrapper
     fi
+elif [ "$(uname -s)" == "Linux" ]; then
+    sudo apt-get update
+    sudo apt-get install --yes --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev python-openssl git
+    if ! [ -d ~/.pyenv ]; then
+        git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+    fi
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 fi
 
 #
@@ -81,4 +89,5 @@ pipx install isort
 pipx install mypy
 pipx install pylint
 pipx install tox
+pipx install virtualenv
 pipx install virtualenvwrapper
