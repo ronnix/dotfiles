@@ -33,6 +33,7 @@ python3-argcomplete
 chromium-browser
 chromium-chromedriver
 firefox
+firefox-geckodriver
 handbrake
 transmission-gtk
 
