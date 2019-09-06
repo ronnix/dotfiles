@@ -1,4 +1,7 @@
-sublime/.config/sublime-text-3/Package Control.*
+sublime/.config/sublime-text-3/Cache/
+sublime/.config/sublime-text-3/Index/
+sublime/.config/sublime-text-3/Local/
+sublime/.config/sublime-text-3/Packages/ Control.*
 sublime/.config/sublime-text-3/*.tmTheme
 sublime/.config/sublime-text-3/*/*.tmTheme
 !*.sublime-settings

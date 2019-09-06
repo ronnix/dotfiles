@@ -1,8 +1,4 @@
 {
-	"bootstrapped": true,
-	"in_process_packages":
-	[
-	],
 	"installed_packages":
 	[
 		"Advanced CSV",
@@ -20,7 +16,6 @@
 		"Cucumber",
 		"Emmet",
 		"GitHubinator",
-		"GoSublime",
 		"HTML-CSS-JS Prettify",
 		"HTMLBeautify",
 		"Increment Selection",
@@ -44,7 +39,6 @@
 		"Python Create Package",
 		"requirementstxt",
 		"Restructured Text (RST) Snippets",
-		"RestructuredText Improved",
 		"Sass",
 		"SideBarEnhancements",
 		"StringEncode",
