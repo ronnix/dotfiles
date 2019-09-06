@@ -4,7 +4,7 @@ function mg {
 }
 
 # Hub
-if [ -f /usr/local/bin/hub ]; then
+if which >/dev/null hub ; then
     eval "$(hub alias -s)"
 fi
 
