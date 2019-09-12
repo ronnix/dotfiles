@@ -19,9 +19,11 @@ pwgen
 stow
 terminator
 tmux
+traceroute
 tree
 vim
 wget
+whois
 zsh
 
 # Bash completion
