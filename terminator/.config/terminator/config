@@ -1,0 +1,28 @@
+[global_config]
+  enabled_plugins = EditorPlugin, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  title_transmit_bg_color = "#73d216"
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = Tomorrow Night
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      size = 1400, 800
+      type = Window
+[plugins]
+  [[EditorPlugin]]
+    command = gvim --remote-silent +{line} {filepath}
+    groups = file line
+    match = ([^ \t\n\r\f\v:]+?):([0-9]+)
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    scrollback_infinite = True
+  [[Tomorrow Night]]
+    background_color = "#1d1f21"
+    cursor_color = "#c5c8c6"
+    foreground_color = "#c5c8c6"
+    palette = "#000000:#cc6666:#b5bd68:#f0c674:#81a2be:#b294bb:#8abeb7:#ffffff:#000000:#cc6666:#b5bd68:#f0c674:#81a2be:#b294bb:#8abeb7:#ffffff"
