@@ -1,4 +1,5 @@
 [global_config]
+  always_split_with_profile = True
   enabled_plugins = EditorPlugin, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   title_transmit_bg_color = "#73d216"
 [keybindings]
