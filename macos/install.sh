@@ -7,7 +7,7 @@ USER=$(whoami)
 ## OS X settings and tweaks
 ##
 
-source osx-settings.sh
+sudo ./osx-settings.sh
 
 
 ##
