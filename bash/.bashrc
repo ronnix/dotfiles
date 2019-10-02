@@ -222,6 +222,8 @@ else
   export PROMPT_COMMAND='history -a'
 fi
 
+source ~/.bash_functions
+
 for script in ~/.bashrc.d/*.sh; do
     if [ -x "${script}" ]; then
         source ${script}

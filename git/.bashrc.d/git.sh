@@ -12,3 +12,6 @@ fi
 # if [ -f /usr/local/bin/lab ]; then
 #     alias git=lab
 # fi
+
+# git-absorb
+pathprepend $HOME/.cargo/bin

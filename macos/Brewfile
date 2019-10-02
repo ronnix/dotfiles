@@ -39,6 +39,7 @@ brew "docker-compose-completion"
 brew "awscli"
 brew "chromedriver"
 brew "geckodriver"
+brew "git-absorb"
 brew "httpie"
 brew "shellcheck"
 
