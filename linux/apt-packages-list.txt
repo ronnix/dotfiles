@@ -24,6 +24,7 @@ tree
 vim
 wget
 whois
+xclip
 zsh
 
 # Bash completion
