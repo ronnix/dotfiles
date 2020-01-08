@@ -84,6 +84,7 @@ python3.7 -m pip install pipx
 #
 export PATH=$HOME/.local/bin:$PATH
 pipx install black[d]
+pipx install docker-compose
 pipx install flake8
 pipx install isort
 pipx install mypy
