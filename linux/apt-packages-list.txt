@@ -8,6 +8,7 @@ dos2unix
 gawk
 gnupg
 graphviz
+gthumb
 htop
 jq
 mosh
