@@ -40,7 +40,7 @@ stow virtualenvwrapper
 
 if which pyenv ; then
 
-    source ~/.bash_profile.d/pyenv.sh
+    source ~/.bashrc.d/pyenv.sh
 
     # MacOS
     if [ "$(uname -s)" == "Darwin" ]; then
