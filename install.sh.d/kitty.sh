@@ -1,7 +1,7 @@
 set -o errexit
 
 if [ "$(uname -s)" == "Linux" ]; then
-    version=0.17.2
+    version=0.18.3
     install_dir=$HOME/.local/kitty.app
 
     mkdir -p $install_dir
