@@ -1,6 +1,6 @@
 # Colored output
-alias ls='ls -G'
-alias ll='ls -lhG'
+alias ls='ls --color=auto -G'
+alias ll='ls --color=auto -lhG'
 alias diff='colordiff'
 
 # Linux-isms
