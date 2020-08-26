@@ -28,6 +28,11 @@ whois
 xclip
 zsh
 
+# Emoji support
+fonts-noto-color-emoji
+fonts-emojione
+gnome-characters
+
 # Bash completion
 bash-completion
 python-optcomplete
