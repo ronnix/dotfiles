@@ -15,6 +15,7 @@ mosh
 moreutils
 mtr
 nmap
+numlockx
 psmisc
 pwgen
 stow
