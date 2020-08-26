@@ -5,4 +5,4 @@ sudo apt-get update
 sudo apt-get install --yes $(egrep -v '^(#|$)' apt-packages-list.txt)
 
 # Linux-specific config
-stow xclip
+stow --dir=.. xclip
