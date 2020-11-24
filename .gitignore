@@ -1,3 +1,7 @@
+albert/.config/albert/core.db
+albert/.config/albert/last_used_version
+albert/.config/albert/*/*.db
+albert/.config/albert/org.albert.extension.websearch/*.
 sublime/.config/sublime-text-3/Cache/
 sublime/.config/sublime-text-3/Index/
 sublime/.config/sublime-text-3/Local/
