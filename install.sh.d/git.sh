@@ -13,4 +13,14 @@ if [ "$(uname -s)" == "Darwin" ]; then
     fi
 fi
 
+if [ "$(uname -s)" == "Linux" ]; then
+    sudo apt-get install --yes exiftool imagemagick xdg-utils
+fi
+
 stow git
+
+# Install git-diff-image
+SHA1=12e717f5e9b084e117c354db5204b949b3232a95
+DEST=~/.local/bin
+wget https://raw.githubusercontent.com/ewanmellor/git-diff-image/${SHA1}/diff-image -O ${DEST}/diff-image
+wget https://raw.githubusercontent.com/ewanmellor/git-diff-image/${SHA1}/git_diff_image -O ${DEST}/git_diff_image

@@ -75,6 +75,7 @@
     # Diff
     d = diff
     dc = diff --cached
+    di = diff-image
 
     # Outgoing commits (hg-like)
     out = !git log $(git rev-parse --abbrev-ref HEAD) --not origin/$(git rev-parse --abbrev-ref HEAD) --
@@ -86,6 +87,7 @@
 
     # Show aliases
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+	diff-image = "!f() { cd -- \"${GIT_PREFIX:-.}\"; GIT_DIFF_IMAGE_ENABLED=1 git diff \"$@\"; }; f"
 
 [diff]
     noprefix = true
@@ -112,6 +114,7 @@
 
 [core]
     excludesfile = ~/.gitignore_global
+	attributesfile = ~/.gitattributes
 
 [status]
     showuntrackedfiles = all
@@ -121,3 +124,5 @@
 
 [merge]
     conflictstyle = diff3
+[diff "image"]
+	command = /home/ronan/.local/bin/git_diff_image
