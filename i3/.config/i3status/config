@@ -1,0 +1,104 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+# https://py3status.readthedocs.io/en/latest/configuration.html
+# https://py3status.readthedocs.io/en/latest/modules.html
+
+general {
+        colors = true
+	color = "#C5C8C6"
+	color_good = "#B5BD68"
+	color_degraded = "#F0C674"
+	color_bad = "#CC6666"
+
+        interval = 5
+}
+
+#order += "dropboxd_status"
+order += "lm_sensors"
+order += "nvidia_smi"
+#order += "disk /"
+#order += "disk /home"
+order += "diskdata root"
+order += "diskdata home"
+order += "diskdata rate"
+order += "loadavg"
+order += "whatismyip"
+order += "net_rate"
+order += "air_quality"
+order += "tztime local"
+order += "dpms"
+
+disk "/" {
+        format = "/ %avail"
+}
+
+disk "/home" {
+        format = "/home %avail"
+}
+
+diskdata "root" {
+	disk = "/dev/nvme1n1p3"
+	format = "/ {free} GB"
+	format_space = "{value:d}"
+}
+
+diskdata "home" {
+	disk = "/dev/nvme1n1p7"
+	format = "/home {free} GB"
+	format_space = "{value:d}"
+}
+
+diskdata "rate" {
+	disk = "/dev/nvme1n1"
+	format = "{read} R {write} W"
+}
+
+# CPU package T°
+lm_sensors {
+	chips = ["coretemp*"]
+	sensors = ["package_id_0"]
+	format_chip = '[\?if=name=coretemp-isa-0000 CPU ]'
+	format_chip += '[\?if=name=nouveau-pci-0500 GPU ]'
+	format_chip += '{format_sensor}'
+	format_sensor = '\?color=input {input:g}°C'
+        thresholds = [(0, 'degraded'), (20, 'good'), (60, 'orange'), (i90, 'bad')]
+}
+
+# GPU T°
+nvidia_smi {
+	format_gpu = 'GPU [\?color=temperature.gpu {temperature.gpu}°C] '
+}
+
+# Network status / external IP
+whatismyip {
+	mode = "status"
+	format = "{icon} {ip} ({country_iso})"
+}
+
+net_rate {
+	format = "{down} ↓ / {up} ↑"
+}
+
+air_quality {
+	auth_token = "XXX"
+	location = "XXX"
+	format = "AQI {aqi} ({category})"
+	format_datetime = {"time": "%-I%P"}
+}
+
+tztime local {
+        format = "%d/%m/%Y %H:%M:%S"
+}
+
+dpms {
+	button_toggle = None
+	button_off = 1
+	icon_on = "🖥️"
+	icon_off = "X"
+}
