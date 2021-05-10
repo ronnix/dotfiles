@@ -25,6 +25,7 @@ tmux
 traceroute
 tree
 vim
+wdiff
 wget
 whois
 xclip
