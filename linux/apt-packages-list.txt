@@ -29,6 +29,7 @@ wdiff
 wget
 whois
 xclip
+zopfli
 zsh
 
 # Emoji support
