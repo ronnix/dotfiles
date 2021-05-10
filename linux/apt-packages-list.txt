@@ -41,6 +41,7 @@ bash-completion
 python3-argcomplete
 
 # Apps
+autokey-gtk
 chromium-browser
 chromium-chromedriver
 firefox
