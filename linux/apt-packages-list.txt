@@ -16,6 +16,8 @@ moreutils
 mtr
 nmap
 numlockx
+optipng
+pnginfo
 psmisc
 pwgen
 stow
