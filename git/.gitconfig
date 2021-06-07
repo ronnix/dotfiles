@@ -58,6 +58,8 @@
 
     # My commits
     me = log -p --author ronan.amicel
+    this-month = !sh -c 'git-this-month.sh'
+    last-month = !sh -c 'git-last-month.sh'
 
     # Commits on this branch and not on master
     lb = log HEAD --not master
