@@ -39,7 +39,7 @@
     rp = reset HEAD -p
 
     # Work in progress
-    wip = commit -m\"Work in progress\"
+    wip = commit --no-verify -m\"Work in progress\"
 
     # Fixup
     fixup = "!f() { msg=\"fixup ${*}\"; git commit -m\"$msg\"; }; f"
