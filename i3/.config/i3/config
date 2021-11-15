@@ -129,6 +129,7 @@ bindsym $mod+equal exec /home/ronan/.local/bin/go-to.sh
 
 # Move current window to selected workspace
 bindsym $mod+Shift+equal exec /home/ronan/.local/bin/move-to.sh
+bindsym $mod+mod1+equal exec /home/ronan/.local/bin/move-to.sh --go
 
 bindsym $mod+mod1+Left move container to workspace prev
 bindsym $mod+mod1+Right move container to workspace next
