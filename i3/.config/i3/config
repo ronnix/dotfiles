@@ -26,6 +26,9 @@ bindsym $mod+Return exec ~/.local/kitty.app/bin/kitty
 # Start a file manager
 bindsym $mod+Shift+Return exec nemo
 
+# Open a text editor
+bindsym $mod+Control+Return exec subl --new-window
+
 # Open a browser window
 bindsym $mod+mod1+Return exec firefox
 
