@@ -175,6 +175,10 @@ bindsym $mod+XF86Tools   exec "xrandr -s 1920x1080"
 bindsym $mod+XF86Launch5 exec "xrandr -s 3840x2160"
 bindsym $mod+XF86Launch6 exec "xrandr -s 5120x2160"
 
+# Force monitor off/on using DPMS (F18-F19)
+bindcode $mod+196 exec "xset dpms force off"
+bindcode $mod+197 exec "xset dpms force on"
+
 # Screenshot
 # - Cmd+F3: screen
 # - Cmd+F4: window
