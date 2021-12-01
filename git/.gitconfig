@@ -11,6 +11,10 @@
 [alias]
     co = checkout
 
+    s = switch
+    sm = switch master
+    sc = switch --create
+
     # Status
     st = status
     sts = status --short --untracked-files=no
