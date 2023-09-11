@@ -10,6 +10,7 @@
 # Do not search in some JS directories
 --ignore-dir=is:.nyc_output
 --ignore-dir=is:.parcel-cache
+--ignore-dir=.next
 
 # Do not search in some Python directories
 --ignore-dir=is:.hypothesis
