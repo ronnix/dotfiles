@@ -12,7 +12,7 @@
     co = checkout
 
     s = switch
-    sm = switch master
+    sm = !git branch | grep master && git switch master || git switch main
     sc = switch --create
 
     # Status
