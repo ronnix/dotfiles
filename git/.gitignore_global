@@ -6,8 +6,11 @@
 .ash_history
 .cache
 .codeintel
+.coverage
+.dist/
 .ipynb_checkpoints
 .mypy_cache
+.parcel-cache
 .project
 .pytest_cache
 .python_history
@@ -17,3 +20,5 @@
 *.rej
 venv
 prof/
+__pycache__
+sandbox_venv3
