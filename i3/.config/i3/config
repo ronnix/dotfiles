@@ -210,6 +210,9 @@ exec --no-startup-id numlockx on
 # Start PolicyKit authentication agent
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
+# Start Gnome Keyring (like SSH agent)
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
+
 # Start some background / systray apps
 exec --no-startup-id albert
 exec --no-startup-id autokey
