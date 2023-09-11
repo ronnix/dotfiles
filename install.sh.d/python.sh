@@ -21,7 +21,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
     sudo apt-get update
-    sudo apt-get install --yes --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev python-openssl git
+    sudo apt-get install --yes --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev git
     if ! [ -d ~/.pyenv ]; then
         git clone https://github.com/pyenv/pyenv.git ~/.pyenv
     fi
@@ -61,7 +61,7 @@ if which pyenv ; then
     #
     # Install multiple Python versions with pyenv
     #
-    VERSIONS="3.7.2 3.6.8 2.7.15"
+    VERSIONS="3.11 3.10 3.9 3.8 3.7 2.7"
     for version in $VERSIONS; do
         pyenv install --skip-existing $version
     done
@@ -72,23 +72,23 @@ fi
 #
 # Upgrade pip
 #
-python3.7 -m pip install --upgrade pip
+python3 -m pip install --upgrade pip
 
 #
 # Install pipx
 #
-python3.7 -m pip install pipx
+python3 -m pip install pipx
 
 #
 # Install some tools system-wide with pipx
 #
 export PATH=$HOME/.local/bin:$PATH
-pipx install black[d]
-pipx install docker-compose
-pipx install flake8
-pipx install isort
-pipx install mypy
-pipx install pylint
-pipx install tox
-pipx install virtualenv
-pipx install virtualenvwrapper
+python3 -m pipx install black[d]
+python3 -m pipx install docker-compose
+python3 -m pipx install flake8
+python3 -m pipx install isort
+python3 -m pipx install mypy
+python3 -m pipx install pylint
+python3 -m pipx install tox
+python3 -m pipx install virtualenv
+python3 -m pipx install virtualenvwrapper
