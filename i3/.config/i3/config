@@ -199,7 +199,7 @@ bindsym $mod+XF86KbdBrightnessDown exec "gnome-screenshot --area --file=/home/ro
 bindsym $mod+Escape exec --no-startup-id "lock.sh"
 
 # Start compositing manager
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf --experimental-backends
+exec_always --no-startup-id /usr/local/bin/picom --config ~/.config/picom/picom.conf --experimental-backends
 
 # Customize key mapping
 exec --no-startup-id xmodmap ~/.Xmodmap

@@ -20,13 +20,16 @@ if [ "$(uname -s)" == "Linux" ]; then
     #rm -f ./rofi_1.5.4-1_amd64.deb
 
     # Install rofimoji
-    wget https://github.com/fdw/rofimoji/releases/download/4.3.0/rofimoji-4.3.0-py3-none-any.whl
-    pipx install rofimoji-4.3.0-py3-none-any.whl
-    rm -f ./rofimoji-4.3.0-py3-none-any.whl
+    VERSION=4.3.0
+    if [[ $(rofimoji --version) != "rofimoji $VERSION" ]]; then
+        wget https://github.com/fdw/rofimoji/releases/download/$VERSION/rofimoji-$VERSION-py3-none-any.whl
+        pipx install rofimoji-$VERSION-py3-none-any.whl
+        rm -f ./rofimoji-$VERSION-py3-none-any.whl
+    fi
 
     # Install picom compositing manager
     if [ ! -f /usr/local/bin/picom ]; then
-        VERSION=8.2
+        VERSION=10.2
         wget -O picom.tar.gz https://github.com/yshui/picom/archive/v$VERSION.tar.gz
         tar xzf picom.tar.gz
         rm -rf picom.tar.gz
