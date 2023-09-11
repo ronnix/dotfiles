@@ -123,7 +123,7 @@
 
 [core]
     excludesfile = ~/.gitignore_global
-	attributesfile = ~/.gitattributes
+    attributesfile = ~/.gitattributes
 
 [status]
     showuntrackedfiles = all
@@ -133,5 +133,6 @@
 
 [merge]
     conflictstyle = diff3
+
 [diff "image"]
-	command = /home/ronan/.local/bin/git_diff_image
+    command = /home/ronan/.local/bin/git_diff_image
