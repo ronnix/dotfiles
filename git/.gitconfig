@@ -25,6 +25,9 @@
     ciad = !git commit --amend --date=\"$(LANG=C date)\"
     cii = commit --allow-empty -m\"Initial commit\"
 
+    # Cherry-pick
+    cp = cherry-pick
+
     # Pull
     pr = pull --rebase
     prull = pull --rebase
