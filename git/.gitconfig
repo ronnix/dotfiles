@@ -137,3 +137,6 @@
 
 [diff "image"]
     command = /home/ronan/.local/bin/git_diff_image
+
+[init]
+	defaultBranch = main
