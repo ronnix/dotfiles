@@ -33,4 +33,12 @@ popd
 
 rm -rf alacritty-$VERSION
 
+if [[ -d $HOME/local/src/alacritty-theme ]]; then
+    pushd $HOME/local/src/alacritty-theme
+    git pull
+    popd
+else
+    git clone https://github.com/alacritty/alacritty-theme $HOME/local/src/alacritty-theme
+fi
+
 stow alacritty
