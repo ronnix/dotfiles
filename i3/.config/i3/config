@@ -212,6 +212,8 @@ exec --no-startup-id numlockx on
 # Start PolicyKit authentication agent
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
+# Auto-mount USB drives
+exec --no-startup-id udiskie &
 
 # Start some background / systray apps
 exec --no-startup-id albert
