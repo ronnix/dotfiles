@@ -180,10 +180,10 @@ bar {
   status_command py3status
 }
 
-# Change screen resolution (F13-F15)
-bindsym $mod+XF86Tools   exec "xrandr -s 1920x1080"
-bindsym $mod+XF86Launch5 exec "xrandr -s 3840x2160"
-bindsym $mod+XF86Launch6 exec "xrandr -s 5120x2160"
+# Change screen resolution
+bindsym $mod+F10   exec "xrandr -s 1920x1080"
+bindsym $mod+F11 exec "xrandr -s 3840x2160"
+bindsym $mod+F12 exec "xrandr -s 5120x2160"
 
 # Force monitor off/on using DPMS (F18-F19)
 bindcode $mod+196 exec "xset dpms force off"
