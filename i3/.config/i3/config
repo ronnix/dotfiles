@@ -193,9 +193,9 @@ bindcode $mod+Shift+F9 exec "xset dpms force off"
 # - Cmd+F3: screen
 # - Cmd+F4: window
 # - Cmd+F5: area
-bindsym $mod+XF86LaunchA exec "gnome-screenshot --file=/home/ronan/Images/Screenshots/screenshot-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')-$(date --iso-8601=ns | cut -d+ -f1 | sed 's/T/-/').png"
-bindsym $mod+XF86LaunchB exec "gnome-screenshot --window --file=/home/ronan/Images/Screenshots/screenshot-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')-$(date --iso-8601=ns | cut -d+ -f1 | sed 's/T/-/').png"
-bindsym $mod+XF86KbdBrightnessDown exec "gnome-screenshot --area --file=/home/ronan/Images/Screenshots/screenshot-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')-$(date --iso-8601=ns | cut -d+ -f1 | sed 's/T/-/').png"
+bindsym $mod+F3 exec "gnome-screenshot --file=/home/ronan/Images/Screenshots/screenshot-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')-$(date --iso-8601=ns | cut -d+ -f1 | sed 's/T/-/').png"
+bindsym $mod+F4 exec "gnome-screenshot --window --file=/home/ronan/Images/Screenshots/screenshot-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')-$(date --iso-8601=ns | cut -d+ -f1 | sed 's/T/-/').png"
+bindsym $mod+F5 exec "gnome-screenshot --area --file=/home/ronan/Images/Screenshots/screenshot-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')-$(date --iso-8601=ns | cut -d+ -f1 | sed 's/T/-/').png"
 
 # Monitor standby + lock screen
 bindsym $mod+Escape exec --no-startup-id "lock.sh"
