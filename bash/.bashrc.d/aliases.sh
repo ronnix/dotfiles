@@ -7,7 +7,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
   alias ll='ls -lhG'
 
   alias ldd="otool -L"
-  alias rehash="set +h"
+  alias rehash="hash -r"
 else
   alias ls='ls --color=auto'
   alias ll='ls --color=auto -lh'
