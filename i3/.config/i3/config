@@ -30,7 +30,9 @@ bindsym $mod+Shift+Return exec nemo
 bindsym $mod+Control+Return exec subl --new-window
 
 # Open a browser window
-bindsym $mod+mod1+Return exec firefox
+bindsym $mod+b exec firefox
+bindsym $mod+Shift+b exec chromium
+bindsym $mod+Mod1+b exec thorium-browser
 
 # Select browser tab
 bindsym $mod+t exec /home/ronan/.local/bin/go-to-tab.sh
