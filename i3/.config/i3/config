@@ -185,9 +185,9 @@ bindsym $mod+F10   exec "xrandr -s 1920x1080"
 bindsym $mod+F11 exec "xrandr -s 3840x2160"
 bindsym $mod+F12 exec "xrandr -s 5120x2160"
 
-# Force monitor off/on using DPMS (F18-F19)
-bindcode $mod+196 exec "xset dpms force off"
-bindcode $mod+197 exec "xset dpms force on"
+# Force monitor off/on using DPMS
+bindcode $mod+F9 exec "xset dpms force on"
+bindcode $mod+Shift+F9 exec "xset dpms force off"
 
 # Screenshot
 # - Cmd+F3: screen
