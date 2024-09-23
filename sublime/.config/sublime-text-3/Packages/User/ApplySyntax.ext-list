@@ -40,5 +40,14 @@
 		"YAML-tmLanguage",
 		"yml",
 		"yml.dist"
-	]
+	],
+	"Bash":
+	[
+		".profile",
+		"ash",
+		"bash",
+		"bashrc",
+		"sh",
+		"zsh"
+	],
 }
