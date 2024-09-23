@@ -61,11 +61,15 @@ if which pyenv ; then
     #
     # Install multiple Python versions with pyenv
     #
-    VERSIONS="3.11 3.10 3.9 3.8 3.7 2.7"
-    for version in $VERSIONS; do
-        pyenv install --skip-existing $version
+    MINOR_VERSIONS="3.12 3.11 3.10 3.9 3.8 3.7 2.7"
+    VERSIONS=""
+    for MINOR_VERSION in $MINOR_VERSIONS; do
+        VERSION="$(pyenv latest --known $MINOR_VERSION)"
+        VERSIONS+="$VERSION "
+        pyenv install --skip-existing $VERSION
     done
     pyenv global $VERSIONS
+    pyenv rehash
 
 fi
 
