@@ -4,5 +4,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions fzf >/dev/null ; then
         brew install fzf
     fi
-    stow fzf
+elif [ "$(uname -s)" == "Linux" ]; then
+    sudo apt-get install --yes fzf
 fi
+stow fzf
