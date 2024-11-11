@@ -26,7 +26,7 @@ if [ "$(uname -s)" == "Linux" ]; then
     #rm -f ./rofi_1.5.4-1_amd64.deb
 
     # Install rofimoji
-    VERSION=4.3.0
+    VERSION=6.5.0
     if [[ $(rofimoji --version) != "rofimoji $VERSION" ]]; then
         wget https://github.com/fdw/rofimoji/releases/download/$VERSION/rofimoji-$VERSION-py3-none-any.whl
         pipx install rofimoji-$VERSION-py3-none-any.whl
