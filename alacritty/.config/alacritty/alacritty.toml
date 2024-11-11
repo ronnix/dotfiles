@@ -1,3 +1,4 @@
+[general]
 import = [
     "~/local/src/alacritty-theme/themes/tomorrow_night.toml"
 ]

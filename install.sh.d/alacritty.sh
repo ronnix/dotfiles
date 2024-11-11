@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-VERSION=0.13.2
+VERSION=0.14.0
 
 rm -f alacritty.tar.gz
 wget https://github.com/alacritty/alacritty/archive/refs/tags/v$VERSION.tar.gz -O alacritty.tar.gz
