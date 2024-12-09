@@ -99,6 +99,28 @@
     out = !git log $(git rev-parse --abbrev-ref HEAD) --not origin/$(git rev-parse --abbrev-ref HEAD) --
     outp = !git log -p $(git rev-parse --abbrev-ref HEAD) --not origin/$(git rev-parse --abbrev-ref HEAD) --
 
+    # Clean up branch
+    rebase-and-remove = "!f() { \
+        if [ -z \"$1\" ]; then \
+            echo \"Please provide a branch name\"; \
+            return 1; \
+        fi; \
+        if ! git show-ref --verify --quiet refs/heads/$1; then \
+            echo \"Branch '$1' does not exist\"; \
+            return 1; \
+        fi; \
+        git switch $1 && \
+        if ! git rebase main; then \
+            echo \"Rebase failed, aborting...\"; \
+            git rebase --abort; \
+            git switch main; \
+            return 1; \
+        fi && \
+        git switch main && \
+        git branch -d $1 || \
+        echo \"Failed to clean up branch '$1'.\"; \
+    }; f"
+
     # Update the default branch then rebase the current branch onto it
     prb = "!f() { m=$(git default-branch); prev=$(git rev-parse --abbrev-ref HEAD); git co \"$m\" && git pr && git co \"$prev\" && git rebase \"$m\"; }; f"
     prbm = "!f() { m=$(git default-branch); prev=$(git rev-parse --abbrev-ref HEAD); git co \"$m\" && git pr && git co \"$prev\" && git rebase \"$m\" && git co \"$m\" && git rebase \"$prev\"; }; f"
