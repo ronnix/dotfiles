@@ -1,5 +1,4 @@
 # Base utils
-ack-grep
 bash-completion
 colordiff
 coreutils
@@ -10,7 +9,6 @@ gnupg
 graphviz
 gthumb
 htop
-jq
 mosh
 moreutils
 mtr
@@ -20,13 +18,9 @@ optipng
 pnginfo
 psmisc
 pwgen
-stow
 tmux
 traceroute
-tree
-vim
 wdiff
-wget
 whois
 xclip
 zopfli
