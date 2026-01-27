@@ -1,4 +1,5 @@
-set -o errexit
+#!/bin/bash -e
+# DEPENDS: stow wget
 
 if [ "$(uname -s)" == "Linux" ]; then
     version=0.18.3

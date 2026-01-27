@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# DEPENDS: curl stow wget
 
 # Install Sublime Text
 if [ "$(uname -s)" == "Darwin" ]; then

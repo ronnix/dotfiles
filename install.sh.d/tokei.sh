@@ -1,5 +1,10 @@
+#!/bin/bash -e
+# DEPENDS: wget
+
 if [ "$(uname -s)" == "Darwin" ]; then
-    brew install tokei
+    if ! brew ls --versions tokei >/dev/null ; then
+        brew install tokei
+    fi
 elif [ "$(uname -s)" == "Linux" ]; then
     if [ ! -f /usr/local/bin/tokei ]; then
         wget https://github.com/XAMPPRocky/tokei/releases/download/v10.0.1/tokei-v10.0.1-x86_64-unknown-linux-gnu.tar.gz -O /tmp/tokei-v10.0.1-x86_64-unknown-linux-gnu.tar.gz

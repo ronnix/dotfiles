@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# DEPENDS: stow 
 
 #
 # Rename existing .bashrc to avoid conflicts

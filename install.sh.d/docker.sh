@@ -1,3 +1,6 @@
+#!/bin/bash -e
+# DEPENDS: curl
+
 if [ "$(uname -s)" == "Linux" ]; then
     sudo apt-get install --yes apt-transport-https ca-certificates curl gnupg-agent software-properties-common
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -

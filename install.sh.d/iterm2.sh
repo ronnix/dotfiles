@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# DEPENDS: stow
 
 if [ "$(uname -s)" == "Darwin" ]; then
 

@@ -1,3 +1,6 @@
+#!/bin/bash -e
+# DEPENDS: wget
+
 if [ "$(uname -s)" == "Linux" ]; then
   wget https://www.thregr.org/~wavexx/software/screenkey/releases/screenkey-1.2.tar.gz
   tar xzf screenkey-1.2.tar.gz

@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# DEPENDS: stow
 
 #
 # Install and run bash profile fragment

@@ -1,3 +1,6 @@
+#!/bin/bash -e
+# DEPENDS: python stow wget
+
 set -o errexit
 
 if [ "$(uname -s)" == "Linux" ]; then

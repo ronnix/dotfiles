@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 if [ "$(uname -s)" == "Linux" ]; then
     sudo add-apt-repository --yes ppa:wireguard/wireguard
     sudo apt-get update
