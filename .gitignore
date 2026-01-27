@@ -9,4 +9,4 @@ sublime/.config/sublime-text-3/Local/
 sublime/.config/sublime-text-3/Packages/ Control.*
 sublime/.config/sublime-text-3/*.tmTheme
 sublime/.config/sublime-text-3/*/*.tmTheme
-!*.sublime-settings
+!*.sublime-settings.claude/settings.local.json
