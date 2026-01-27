@@ -3,7 +3,6 @@
 
 [user]
     name = Ronan Amicel
-    email = ronan.amicel@gmail.com
 
 [color]
     ui = auto
@@ -99,7 +98,7 @@
 	diff-image = "!f() { cd -- \"${GIT_PREFIX:-.}\"; GIT_DIFF_IMAGE_ENABLED=1 git diff \"$@\"; }; f"
 
 [diff]
-    noprefix = true
+    #noprefix = true
     wordRegex = .
     algorithm = patience
     renames = true
@@ -135,8 +134,9 @@
 [merge]
     conflictstyle = diff3
 
-[diff "image"]
-    command = /home/ronan/.local/bin/git_diff_image
+#[diff "image"]
+#    command = /home/ronan/.local/bin/git_diff_image
 
 [init]
 	defaultBranch = main
+	templateDir = /Users/ronan/.git-template
