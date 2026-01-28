@@ -24,6 +24,4 @@ HOOK_SCRIPT_URL="https://raw.githubusercontent.com/thoughtworks/talisman/${TALIS
 curl -L "${HOOK_SCRIPT_URL}" -o "${TALISMAN_HOME}/talisman_hook_script"
 chmod +x "${TALISMAN_HOME}/talisman_hook_script"
 
-# Configure global git hook via stow
-git config --global init.templateDir "${HOME}/.git-template"
 stow talisman

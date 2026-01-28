@@ -139,7 +139,7 @@
 
 [init]
 	defaultBranch = main
-	templateDir = /Users/ronan/.git-template
+	templateDir = ~/.git-template
 
 [include]
     path = ~/.gitconfig.d/critique
