@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# DEPENDS: brew
+# DEPENDS: brew stow
 
 if [ "$(uname -s)" == "Darwin" ]; then
     brew tap oven-sh/bun
@@ -7,3 +7,5 @@ if [ "$(uname -s)" == "Darwin" ]; then
 elif [ "$(uname -s)" == "Linux" ]; then
     curl -fsSL https://bun.sh/install | bash
 fi
+
+stow bun
