@@ -1,3 +1,8 @@
+# Homebrew completions
+if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
+    fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+fi
+
 # Init completion
 autoload -Uz compinit && compinit
 
