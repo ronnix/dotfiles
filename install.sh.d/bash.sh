@@ -5,7 +5,7 @@
 # Rename existing .bashrc to avoid conflicts
 #
 if [ -f ~/.bashrc ]; then
-  if [ -x /usr/local/bin/gmv ]; then
+  if command -v gmv >/dev/null; then
     MV=gmv
   else
     MV=mv
