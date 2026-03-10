@@ -1,5 +1,18 @@
 #!/bin/bash -e
-# DEPENDS: stow
+# DEPENDS: stow bash brew
+
+#
+# Install Go
+#
+if [ "$(uname -s)" == "Darwin" ]; then
+    if ! brew ls --versions go >/dev/null ; then
+        brew install go
+    fi
+elif [ "$(uname -s)" == "Linux" ]; then
+    if ! command -v go >/dev/null ; then
+        sudo apt-get install -y golang
+    fi
+fi
 
 #
 # Install and run bash profile fragment
@@ -11,7 +24,7 @@ source ~/.bash_profile.d/go.sh
 #
 # Install some useful Go tools
 #
-go get github.com/golang/lint/golint
-go get golang.org/x/tools/cmd/godoc
-go get golang.org/x/tools/cmd/goimports
-go get golang.org/x/tools/cmd/guru
+go install golang.org/x/lint/golint@latest
+go install golang.org/x/tools/cmd/godoc@latest
+go install golang.org/x/tools/cmd/goimports@latest
+go install golang.org/x/tools/cmd/guru@latest
