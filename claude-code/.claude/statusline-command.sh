@@ -8,8 +8,8 @@ user=$(whoami)
 dir=$(echo "$input" | jq -r '.workspace.current_dir')
 model=$(echo "$input" | jq -r '.model.display_name')
 context_pct=$(echo "$input" | jq -r '.context_window.remaining_percentage // empty')
-git_branch=$(cd "$dir" 2>/dev/null && git -c core.useBuiltinFSMonitor=false -c core.fsmonitor=false branch --show-current 2>/dev/null)
-git_dirty=$(cd "$dir" 2>/dev/null && [ -n "$(git -c core.useBuiltinFSMonitor=false -c core.fsmonitor=false status --porcelain 2>/dev/null)" ] && echo '*' || echo '')
+git_branch=$(cd "$dir" 2>/dev/null && git --no-optional-locks -c core.useBuiltinFSMonitor=false -c core.fsmonitor=false branch --show-current 2>/dev/null)
+git_dirty=$(cd "$dir" 2>/dev/null && [ -n "$(git --no-optional-locks -c core.useBuiltinFSMonitor=false -c core.fsmonitor=false status --porcelain 2>/dev/null)" ] && echo '*' || echo '')
 time=$(date '+%H:%M')
 
 # Format context percentage
