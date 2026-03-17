@@ -12,3 +12,7 @@ sublime/.config/sublime-text-3/*/*.tmTheme
 !*.sublime-settings
 .claude/settings.local.json
 macos/Brewfile.bak
+
+# Dolt database files (added by bd init)
+.dolt/
+*.db
