@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# DEPENDS: go
+# DEPENDS: go dolt
 
 if ! command -v bd >/dev/null ; then
     go install github.com/steveyegge/beads/cmd/bd@latest
