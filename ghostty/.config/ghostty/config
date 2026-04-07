@@ -1,0 +1,6 @@
+font-family = MesloLGS Nerd Font
+font-size = 14
+theme = Catppuccin Mocha
+window-padding-x = 4
+window-padding-y = 4
+shell-integration = detect
