@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# DEPENDS: brew
 
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions pandoc >/dev/null ; then
