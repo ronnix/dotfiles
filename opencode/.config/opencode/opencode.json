@@ -1,0 +1,42 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "lmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio",
+      "options": {
+        "baseURL": "http://127.0.0.1:1234/v1"
+      },
+      "models": {
+        "qwen/qwen3.6-35b-a3b": {
+          "name": "Qwen3.6 35B-A3B"
+        },
+        "qwen/qwen3.5-35b-a3b": {
+          "name": "Qwen3.5 35B-A3B"
+        },
+        "google/gemma-4-31b": {
+          "name": "Gemma 4 31B"
+        },
+        "google/gemma-4-26b-a4b": {
+          "name": "Gemma 4 26B-A4B"
+        }
+      }
+    },
+    "llama-swap": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama-swap",
+      "options": {
+        "baseURL": "http://127.0.0.1:8080/v1"
+      },
+      "models": {
+        "qwen3-coder": {
+          "name": "Qwen3 Coder (llama-swap)",
+          "limit": {
+            "context": 128000,
+            "output": 65536
+          }
+        }
+      }
+    }
+  }
+}
