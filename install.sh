@@ -102,6 +102,14 @@ esac
 
 # Parse command line arguments for module selection
 if [ $# -gt 0 ]; then
+    # Validate all modules before installing anything
+    for module in "$@"; do
+        if [ ! -f "install.sh.d/${module}.sh" ]; then
+            echo "❌ Module '$module' not found. Use --list to see available modules."
+            exit 1
+        fi
+    done
+
     # Install specific modules (always include platform module first)
     echo "Installing platform module ($PLATFORM_MODULE) and specific modules: $*"
     
@@ -113,13 +121,7 @@ if [ $# -gt 0 ]; then
     
     # Then install requested modules
     for module in "$@"; do
-        script_path="install.sh.d/${module}.sh"
-        if [ -f "$script_path" ]; then
-            execute_script "$script_path"
-        else
-            echo "❌ Module '$module' not found. Use --list to see available modules."
-            exit 1
-        fi
+        execute_script "install.sh.d/${module}.sh"
     done
 else
     # Install all modules (default behavior)
