@@ -18,7 +18,7 @@ fi
 #
 # Install multiple Python versions with pyenv
 #
-MINOR_VERSIONS="3.13 3.12 3.11 3.10 3.9 3.8 3.7 2.7"
+MINOR_VERSIONS="3.14 3.13 3.12 3.11 3.10"
 VERSIONS=""
 for MINOR_VERSION in $MINOR_VERSIONS; do
     VERSION="$(pyenv latest --known $MINOR_VERSION)"
