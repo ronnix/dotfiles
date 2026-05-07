@@ -11,9 +11,6 @@
         "qwen/qwen3.6-35b-a3b": {
           "name": "Qwen3.6 35B-A3B"
         },
-        "qwen/qwen3.5-35b-a3b": {
-          "name": "Qwen3.5 35B-A3B"
-        },
         "google/gemma-4-31b": {
           "name": "Gemma 4 31B"
         },
