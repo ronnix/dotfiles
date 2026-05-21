@@ -2,15 +2,18 @@
 # DEPENDS: coreutils starship stow
 
 #
-# Rename existing .zshrc to avoid conflicts
+# Rename existing dotfiles to avoid stow conflicts
 #
-if [ -f ~/.zshrc ]; then
-  if [ "$(uname -s)" == "Darwin" ]; then
-    MV=gmv
-  else
-    MV=mv
-  fi
-  $MV --backup=numbered ~/.zshrc ~/.zshrc.orig
+if [ "$(uname -s)" == "Darwin" ]; then
+  MV=gmv
+else
+  MV=mv
 fi
+
+for f in ~/.zshrc ~/.zprofile; do
+  if [ -f "$f" ]; then
+    $MV --backup=numbered "$f" "$f.orig"
+  fi
+done
 
 stow zsh
