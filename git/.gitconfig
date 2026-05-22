@@ -103,6 +103,14 @@
     algorithm = patience
     renames = true
 
+[pager]
+    diff = riff
+    show = riff
+    log = riff
+
+[interactive]
+    diffFilter = riff --color=on
+
 [fetch]
     recurseSubmodules = on-demand
 

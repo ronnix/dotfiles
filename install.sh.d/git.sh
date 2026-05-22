@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# DEPENDS: cargo stow wget
+# DEPENDS: cargo riff stow wget
 
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions git >/dev/null ; then
