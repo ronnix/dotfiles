@@ -7,16 +7,22 @@ input=$(cat)
 user=$(whoami)
 dir=$(echo "$input" | jq -r '.workspace.current_dir')
 model=$(echo "$input" | jq -r '.model.display_name')
-context_pct=$(echo "$input" | jq -r '.context_window.remaining_percentage // empty')
+ctx_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens // empty')
+ctx_used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 git_branch=$(cd "$dir" 2>/dev/null && git --no-optional-locks -c core.useBuiltinFSMonitor=false -c core.fsmonitor=false branch --show-current 2>/dev/null)
 git_dirty=$(cd "$dir" 2>/dev/null && [ -n "$(git --no-optional-locks -c core.useBuiltinFSMonitor=false -c core.fsmonitor=false status --porcelain 2>/dev/null)" ] && echo '*' || echo '')
 time=$(date '+%H:%M')
 
-# Format context percentage
-if [ -n "$context_pct" ]; then
-    ctx="${context_pct}%"
+# Format context window: k-tokens remplis + pourcentage d'utilisation entre parenthèses
+if [ -n "$ctx_tokens" ]; then
+    ctx_k=$(( (ctx_tokens + 500) / 1000 ))  # arrondi au millier le plus proche
+    if [ -n "$ctx_used_pct" ]; then
+        ctx="${ctx_k}k (${ctx_used_pct}%)"
+    else
+        ctx="${ctx_k}k"
+    fi
 else
-    ctx="--%"
+    ctx="--"
 fi
 
 # Powerline separators
