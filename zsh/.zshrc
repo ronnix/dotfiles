@@ -1,7 +1,9 @@
-# Homebrew completions
-if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
-    fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
-fi
+# Deduplicate path/fpath: several scripts (brew shellenv, autojump…) prepend
+# the same directories. -U keeps the first occurrence of each entry and
+# maintains uniqueness across all later additions.
+# (The Homebrew site-functions dir is already added by `brew shellenv` in
+# ~/.zprofile, so there is no need to add it again here.)
+typeset -gU path fpath
 
 # Init completion
 autoload -Uz compinit && compinit
