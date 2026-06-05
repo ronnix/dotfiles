@@ -1,3 +1,2 @@
 export GIT_PAGER=less
-export GIT_EDITOR="windsurf -w"
-
+export GIT_EDITOR="devin -w"
