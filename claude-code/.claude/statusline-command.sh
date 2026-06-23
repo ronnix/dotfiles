@@ -7,11 +7,59 @@ input=$(cat)
 user=$(whoami)
 dir=$(echo "$input" | jq -r '.workspace.current_dir')
 model=$(echo "$input" | jq -r '.model.display_name')
+model="${model/ context)/)}"   # "Opus 4.8 (1M context)" -> "Opus 4.8 (1M)"
 ctx_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens // empty')
 ctx_used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 git_branch=$(cd "$dir" 2>/dev/null && git --no-optional-locks -c core.useBuiltinFSMonitor=false -c core.fsmonitor=false branch --show-current 2>/dev/null)
 git_dirty=$(cd "$dir" 2>/dev/null && [ -n "$(git --no-optional-locks -c core.useBuiltinFSMonitor=false -c core.fsmonitor=false status --porcelain 2>/dev/null)" ] && echo '*' || echo '')
 time=$(date '+%H:%M')
+
+# Abrege un chemin facon fish : chaque dossier reduit a ses points de tete +
+# sa 1re lettre (.worktrees -> .w). Restent entiers le dernier composant et,
+# si fourni, le composant a l'index $2 (le nom du projet, cf. plus bas).
+abbrege_chemin() {
+    local chemin="$1" garder_idx="${2:--1}"
+    local -a parties
+    IFS='/' read -ra parties <<< "$chemin"
+    local n=${#parties[@]}
+    local sortie="" i p dots reste
+    for ((i=0; i<n; i++)); do
+        p="${parties[i]}"
+        if [ $i -eq $((n-1)) ] || [ $i -eq "$garder_idx" ]; then
+            sortie+="$p"                       # composant garde entier
+        elif [ -z "$p" ]; then
+            :                                  # composant vide (racine /)
+        else
+            dots="${p%%[!.]*}"                 # points de tete
+            reste="${p#"$dots"}"
+            sortie+="${dots}${reste:0:1}"      # points + 1er caractere
+        fi
+        [ $i -lt $((n-1)) ] && sortie+="/"
+    done
+    printf '%s' "${sortie:-/}"                  # garde la racine "/"
+}
+
+# Racine du depot principal pour garder son nom lisible. En worktree,
+# --git-common-dir pointe vers le .git du repo principal (pas du worktree),
+# donc son parent est bien .../mon-assistant-civil.
+racine_projet=$(cd "$dir" 2>/dev/null && git --no-optional-locks -c core.useBuiltinFSMonitor=false -c core.fsmonitor=false rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
+racine_projet="${racine_projet%/*}"
+
+# Raccourcit le chemin : $HOME -> ~ puis abreviation des dossiers.
+# NB: passer le ~ par une variable, sinon bash 5.x le tilde-expanse dans la
+# chaine de remplacement (~ redevient $HOME -> aucun changement visible).
+tilde='~'
+chemin_affiche="${dir/#$HOME/$tilde}"
+projet_idx=-1
+if [ -n "$racine_projet" ]; then
+    racine_affiche="${racine_projet/#$HOME/$tilde}"
+    # Ne garder l'index que si la racine est bien un prefixe du chemin courant.
+    if [ "$chemin_affiche" = "$racine_affiche" ] || [ "${chemin_affiche#"$racine_affiche"/}" != "$chemin_affiche" ]; then
+        IFS='/' read -ra _rp <<< "$racine_affiche"
+        projet_idx=$(( ${#_rp[@]} - 1 ))
+    fi
+fi
+dir_court=$(abbrege_chemin "$chemin_affiche" "$projet_idx")
 
 # Format context window: k-tokens remplis + pourcentage d'utilisation entre parenthèses
 if [ -n "$ctx_tokens" ]; then
@@ -46,7 +94,7 @@ printf "\033[48;2;${pink};38;2;${dark}m 󰀵 %s \033[0m" "$user"
 # Pink -> Peach transition
 printf "\033[48;2;${peach};38;2;${pink}m${sep}\033[0m"
 # Directory (peach)
-printf "\033[48;2;${peach};38;2;${dark}m %s \033[0m" "${dir/#$HOME/~}"
+printf "\033[48;2;${peach};38;2;${dark}m %s \033[0m" "$dir_court"
 # Peach -> Yellow transition
 printf "\033[48;2;${yellow};38;2;${peach}m${sep}\033[0m"
 # Git branch (yellow)
