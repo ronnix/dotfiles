@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# DEPENDS: brew curl
+# DEPENDS: stow brew curl
 
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions 1password-cli >/dev/null ; then
@@ -21,3 +21,5 @@ elif [ "$(uname -s)" == "Linux" ]; then
         sudo apt install 1password-cli
     fi
 fi
+
+stow 1password-cli
