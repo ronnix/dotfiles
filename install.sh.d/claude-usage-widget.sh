@@ -69,9 +69,13 @@ pushd "$SRC_DIR" >/dev/null
 perl -pi -e "s/com\.marcuslai/${BUNDLE_PREFIX}/g; s/P7DV5ZUK9A/${DEVELOPMENT_TEAM}/g" project.yml
 xcodegen generate
 
-# Build the app, generating a development cert/profile via our team as needed
+# Build the app, generating a development cert/profile via our team as needed.
+# Paid teams also require this Mac to be a registered device on the profile;
+# -allowProvisioningDeviceRegistration lets xcodebuild register it. (Free
+# personal teams skip device registration, so this flag was not needed before.)
 xcodebuild -scheme ClaudeUsage -configuration Debug \
-    -allowProvisioningUpdates -derivedDataPath build.noindex build
+    -allowProvisioningUpdates -allowProvisioningDeviceRegistration \
+    -derivedDataPath build.noindex build
 
 # Install into /Applications
 ditto build.noindex/Build/Products/Debug/ClaudeUsage.app /Applications/ClaudeUsage.app
