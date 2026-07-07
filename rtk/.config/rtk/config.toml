@@ -1,0 +1,40 @@
+# rtk configuration — only explicit overrides, rtk defaults apply otherwise.
+# Docs: https://www.rtk-ai.app/docs/getting-started/configuration/
+
+[telemetry]
+enabled = false
+
+# rtk requires every field when the [limits] section is present; all
+# values below are the defaults except grep_max_per_file: the default
+# of 25 matches/file truncated aggressively, and 92% of truncated greps
+# were followed by a retry, erasing the token savings.
+[limits]
+grep_max_results = 200
+grep_max_per_file = 100
+status_max_files = 15
+status_max_untracked = 10
+passthrough_max_chars = 2000
+
+[hooks]
+# Commands the Claude Code hook must NOT rewrite to rtk equivalents.
+# Plain entries are prefix matches; entries starting with "^" are regexes.
+# Exclusions apply per-segment inside compound commands (a && b; c).
+# Based on a 30-day analysis of Claude Code session transcripts (2026-07).
+exclude_commands = [
+    # rtk compacts pre-commit hook failures into apparent success
+    # (exit 0 and an "ok" summary while HEAD did not move).
+    "git commit",
+    # rtk-compacted diffs drop hunks/files; sessions ended up re-reading
+    # whole files or retrying via `rtk proxy git diff` anyway.
+    "git diff",
+    # Patches produced through rtk came out empty.
+    "git format-patch",
+    # Truncated MR diffs hide changed files.
+    "glab mr diff",
+    # rtk grep reserves -h (help) and -m (its own max-results), silently
+    # breaking grep's same-named flags (-h: no filename prefix, -m: max
+    # count per file).
+    "^grep\\b.*\\s-[hm]\\b",
+    # rtk find errors out on compound predicates/actions.
+    "^find\\b.*\\s-(not|o|exec|execdir|delete|prune)\\b",
+]
