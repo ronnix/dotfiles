@@ -1,0 +1,29 @@
+# Hunk configuration — https://github.com/modem-dev/hunk
+# Review-first terminal diff viewer for agent-authored changesets.
+
+# Color theme (open the in-app theme picker to preview the alternatives).
+theme = "github-dark-default"
+
+# Layout: "auto" chooses split/stack based on terminal width ("split", "stack" to force).
+mode = "auto"
+
+# Default version control system: "git", "jj", or "sl".
+vcs = "git"
+
+# Line-number gutter.
+line_numbers = true
+
+# Wrap long lines instead of truncating them.
+wrap_lines = false
+
+# Top menu bar.
+menu_bar = true
+
+# Auto-reload when the diff input changes (or pass --watch per invocation).
+watch = false
+
+# Show agent notes by default (for agent-authored changesets).
+agent_notes = false
+
+# Let the terminal background show through Hunk surfaces.
+transparent_background = false
