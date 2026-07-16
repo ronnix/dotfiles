@@ -3,4 +3,3 @@ if [ -d ~/.local/kitty.app/bin ]; then
 fi
 
 alias ssh='TERM=xterm-color ssh'
-

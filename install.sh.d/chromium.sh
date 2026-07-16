@@ -1,5 +1,5 @@
 if [ "$(uname -s)" == "Linux" ]; then
-    cat <<EOF | sudo tee >/dev/null /etc/apt/preferences.d/chromium
+    cat <<EOF | sudo tee /etc/apt/preferences.d/chromium >/dev/null
 Package: *
 Pin: release o=LP-PPA-saiarcot895-chromium-beta
 Pin-Priority: 800

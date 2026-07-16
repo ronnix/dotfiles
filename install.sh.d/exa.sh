@@ -2,7 +2,7 @@
 # DEPENDS: wget
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    if ! brew ls --versions exa >/dev/null ; then
+    if ! brew ls --versions exa >/dev/null; then
         brew install exa
     fi
 elif [ "$(uname -s)" == "Linux" ]; then

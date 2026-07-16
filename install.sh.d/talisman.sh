@@ -4,9 +4,9 @@
 TALISMAN_VERSION="v1.32.0"
 TALISMAN_HOME="${HOME}/.talisman/bin"
 
-if ! command -v talisman &> /dev/null; then
+if ! command -v talisman &>/dev/null; then
     if [ "$(uname -s)" == "Darwin" ]; then
-        if ! brew ls --versions talisman >/dev/null ; then
+        if ! brew ls --versions talisman >/dev/null; then
             brew install talisman
         fi
     elif [ "$(uname -s)" == "Linux" ]; then

@@ -6,7 +6,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Installe la CLI Readwise (https://readwise.io/cli)
-if ! command -v readwise >/dev/null ; then
+if ! command -v readwise >/dev/null; then
     npm install -g @readwise/cli
 fi
 

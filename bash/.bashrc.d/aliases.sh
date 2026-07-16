@@ -3,24 +3,23 @@
 alias diff='colordiff'
 
 if [ "$(uname -s)" == "Darwin" ]; then
-  alias ls='ls -G'
-  alias ll='ls -lhG'
+    alias ls='ls -G'
+    alias ll='ls -lhG'
 
-  alias ldd="otool -L"
-  alias rehash="hash -r"
+    alias ldd="otool -L"
+    alias rehash="hash -r"
 else
-  alias ls='ls --color=auto'
-  alias ll='ls --color=auto -lh'
+    alias ls='ls --color=auto'
+    alias ll='ls --color=auto -lh'
 fi
 
 # Explain a shell command
-explain () {
+explain() {
     open "http://explainshell.com/explain?cmd=$*"
 }
 
 # Combined mkdir + cd
-mkcd ()
-{
+mkcd() {
     mkdir -p -- "$1" && cd -P -- "$1" || return
 }
 

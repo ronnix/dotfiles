@@ -4,7 +4,7 @@
 # Install GNU coreutils (needed for cross-platform compatibility)
 #
 if [ "$(uname -s)" == "Darwin" ]; then
-    if ! brew ls --versions coreutils >/dev/null ; then
+    if ! brew ls --versions coreutils >/dev/null; then
         brew install coreutils
     fi
 elif [ "$(uname -s)" == "Linux" ]; then

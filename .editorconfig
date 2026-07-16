@@ -1,0 +1,7 @@
+root = true
+
+[*.sh]
+indent_style = space
+indent_size = 4
+# Match the existing style: case branches are indented (shfmt -ci)
+switch_case_indent = true

@@ -3,7 +3,6 @@
 
 USER=$(whoami)
 
-
 ##
 ## OS X settings and tweaks
 ##

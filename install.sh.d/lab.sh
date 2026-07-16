@@ -2,7 +2,7 @@
 # DEPENDS: curl git
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    if ! brew ls --versions lab >/dev/null ; then
+    if ! brew ls --versions lab >/dev/null; then
         brew install lab
     fi
 elif [ "$(uname -s)" == "Linux" ]; then

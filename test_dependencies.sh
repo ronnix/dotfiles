@@ -20,10 +20,10 @@ TESTS_PASSED=0
 run_test() {
     local test_name="$1"
     local test_function="$2"
-    
+
     echo -e "\n${YELLOW}Running test: $test_name${NC}"
     TESTS_RUN=$((TESTS_RUN + 1))
-    
+
     if $test_function; then
         echo -e "${GREEN}✓ PASS${NC}"
         TESTS_PASSED=$((TESTS_PASSED + 1))
@@ -36,18 +36,18 @@ run_test() {
 setup_test_env() {
     rm -rf "$TEST_DIR"
     mkdir -p "$MOCK_DIR"
-    
+
     # Track execution log
     export EXECUTION_LOG="$TEST_DIR/execution.log"
-    > "$EXECUTION_LOG"
+    >"$EXECUTION_LOG"
 }
 
 # Function to create a mock install script
 create_mock_script() {
     local name="$1"
     local depends="$2"
-    
-    cat > "$MOCK_DIR/${name}.sh" << EOF
+
+    cat >"$MOCK_DIR/${name}.sh" <<EOF
 #!/bin/bash
 # DEPENDS: $depends
 echo "Executed: $name" >> "\$EXECUTION_LOG"
@@ -58,21 +58,21 @@ EOF
 # Test 1: Direct dependencies should work
 test_direct_dependencies() {
     setup_test_env
-    
+
     # Create scripts: B depends on A
     create_mock_script "base" ""
     create_mock_script "app" "base"
-    
+
     # Initialize executed scripts array for this test
     declare -a executed_scripts
-    
+
     # Reset executed scripts array
     executed_scripts=()
-    
+
     # Execute app (should also execute base)
     cd "$TEST_DIR"
     execute_script "$MOCK_DIR/app.sh"
-    
+
     # Check execution log
     if [ -f "$EXECUTION_LOG" ] && grep -q "Executed: base" "$EXECUTION_LOG" && grep -q "Executed: app" "$EXECUTION_LOG"; then
         # Check order: base should come before app
@@ -90,42 +90,42 @@ test_direct_dependencies() {
 # Test 2: Transitive dependencies work correctly
 test_transitive_dependencies() {
     setup_test_env
-    
+
     # Create scripts: C depends on B, B depends on A
     create_mock_script "foundation" ""
     create_mock_script "middleware" "foundation"
     create_mock_script "application" "middleware"
-    
+
     # Initialize executed scripts array for this test
     declare -a executed_scripts
-    
+
     # Reset executed scripts array
     executed_scripts=()
-    
+
     # Execute application (should execute middleware and foundation, but won't due to current limitation)
     cd "$TEST_DIR"
     execute_script "$MOCK_DIR/application.sh"
-    
+
     # Check if all three were executed (this should FAIL with current implementation)
     local foundation_executed=0
     local middleware_executed=0
     local application_executed=0
-    
+
     if [ -f "$EXECUTION_LOG" ]; then
         foundation_executed=$(grep -c "Executed: foundation" "$EXECUTION_LOG" 2>/dev/null || echo 0)
         middleware_executed=$(grep -c "Executed: middleware" "$EXECUTION_LOG" 2>/dev/null || echo 0)
         application_executed=$(grep -c "Executed: application" "$EXECUTION_LOG" 2>/dev/null || echo 0)
     fi
-    
+
     echo "Execution counts: foundation=$foundation_executed, middleware=$middleware_executed, application=$application_executed"
-    
+
     # Check if all dependencies were executed in correct order
     if [ "$foundation_executed" -eq 1 ] && [ "$middleware_executed" -eq 1 ] && [ "$application_executed" -eq 1 ]; then
         # Verify execution order: foundation -> middleware -> application
         local foundation_line=$(grep -n "Executed: foundation" "$EXECUTION_LOG" | cut -d: -f1)
         local middleware_line=$(grep -n "Executed: middleware" "$EXECUTION_LOG" | cut -d: -f1)
         local application_line=$(grep -n "Executed: application" "$EXECUTION_LOG" | cut -d: -f1)
-        
+
         if [ "$foundation_line" -lt "$middleware_line" ] && [ "$middleware_line" -lt "$application_line" ]; then
             echo "✓ Transitive dependencies work correctly: foundation -> middleware -> application"
             return 0
@@ -153,12 +153,12 @@ is_executed() {
 execute_script() {
     local script="$1"
     local script_name=$(basename "$script")
-    
+
     # Skip if already executed
     if is_executed "$script_name"; then
         return 0
     fi
-    
+
     # Get and execute dependencies first
     local deps=$(get_dependencies "$script")
     if [ -n "$deps" ]; then
@@ -172,7 +172,7 @@ execute_script() {
             fi
         done
     fi
-    
+
     # Execute the script itself
     echo "Installing: $script_name" >&2
     "$script"
@@ -185,7 +185,7 @@ show_summary() {
     echo "Tests run: $TESTS_RUN"
     echo "Tests passed: $TESTS_PASSED"
     echo "Tests failed: $((TESTS_RUN - TESTS_PASSED))"
-    
+
     if [ $TESTS_PASSED -eq $TESTS_RUN ]; then
         echo -e "${GREEN}All tests passed!${NC}"
     else

@@ -5,11 +5,11 @@
 # Install Go
 #
 if [ "$(uname -s)" == "Darwin" ]; then
-    if ! brew ls --versions go >/dev/null ; then
+    if ! brew ls --versions go >/dev/null; then
         brew install go
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
-    if ! command -v go >/dev/null ; then
+    if ! command -v go >/dev/null; then
         sudo apt-get install -y golang
     fi
 fi

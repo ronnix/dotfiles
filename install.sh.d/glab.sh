@@ -2,7 +2,7 @@
 # DEPENDS: git
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    if ! brew ls --versions glab >/dev/null ; then
+    if ! brew ls --versions glab >/dev/null; then
         brew install glab
     fi
 elif [ "$(uname -s)" == "Linux" ]; then

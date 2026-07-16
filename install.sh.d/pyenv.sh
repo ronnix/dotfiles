@@ -5,19 +5,19 @@
 # Install pyenv
 #
 if [ "$(uname -s)" == "Darwin" ]; then
-    if ! brew ls --versions readline >/dev/null ; then
+    if ! brew ls --versions readline >/dev/null; then
         brew install readline
     fi
-    if ! brew ls --versions xz >/dev/null ; then
+    if ! brew ls --versions xz >/dev/null; then
         brew install xz
     fi
-    if ! brew ls --versions pyenv >/dev/null ; then
+    if ! brew ls --versions pyenv >/dev/null; then
         brew install pyenv
     fi
-    if ! brew ls --versions pyenv-virtualenv >/dev/null ; then
+    if ! brew ls --versions pyenv-virtualenv >/dev/null; then
         brew install pyenv-virtualenv
     fi
-    if ! brew ls --versions pyenv-virtualenvwrapper >/dev/null ; then
+    if ! brew ls --versions pyenv-virtualenvwrapper >/dev/null; then
         brew install pyenv-virtualenvwrapper
     fi
 elif [ "$(uname -s)" == "Linux" ]; then

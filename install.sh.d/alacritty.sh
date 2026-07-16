@@ -12,7 +12,7 @@ pushd alacritty-$VERSION
 
 # On installe les dépendances
 if [ "$(uname -s)" == "Linux" ]; then
-    if ! dpkg -s cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 >/dev/null ; then
+    if ! dpkg -s cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 >/dev/null; then
         sudo apt update
         sudo apt install --yes cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
     fi

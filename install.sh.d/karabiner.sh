@@ -3,9 +3,9 @@
 
 if [ "$(uname -s)" == "Darwin" ]; then
     # Install or upgrade
-    if ! brew list --cask --versions karabiner-elements > /dev/null ; then
+    if ! brew list --cask --versions karabiner-elements >/dev/null; then
         brew install karabiner-elements
-    elif ! brew outdated --cask karabiner-elements > /dev/null ; then
+    elif ! brew outdated --cask karabiner-elements >/dev/null; then
         brew upgrade karabiner-elements
     fi
     # Install config files

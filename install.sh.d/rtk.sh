@@ -2,11 +2,11 @@
 # DEPENDS: curl claude-code stow
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    if ! brew ls --versions rtk >/dev/null ; then
+    if ! brew ls --versions rtk >/dev/null; then
         brew install rtk
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
-    if ! command -v rtk >/dev/null ; then
+    if ! command -v rtk >/dev/null; then
         curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
     fi
 fi

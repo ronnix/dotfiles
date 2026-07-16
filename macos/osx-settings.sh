@@ -25,7 +25,6 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 # Disable Smart Dashes
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -40,7 +39,6 @@ defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screen
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
 
-
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
@@ -50,7 +48,6 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -73,7 +70,6 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.dock wvous-tr-corner -int 10
 defaults write com.apple.dock wvous-tr-modifier -int 0
 
-
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
@@ -82,7 +78,6 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-
 
 ###############################################################################
 # Mail                                                                        #

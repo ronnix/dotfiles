@@ -2,7 +2,7 @@
 # DEPENDS: brew
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    if ! brew ls --versions font-meslo-lg-nerd-font >/dev/null ; then
+    if ! brew ls --versions font-meslo-lg-nerd-font >/dev/null; then
         brew install --cask font-meslo-lg-nerd-font
     fi
 elif [ "$(uname -s)" == "Linux" ]; then

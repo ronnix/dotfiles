@@ -44,7 +44,7 @@ if [ -z "$DEVELOPMENT_TEAM" ]; then
     exit 0
 fi
 
-if ! brew ls --versions xcodegen >/dev/null ; then
+if ! brew ls --versions xcodegen >/dev/null; then
     brew install xcodegen
 fi
 

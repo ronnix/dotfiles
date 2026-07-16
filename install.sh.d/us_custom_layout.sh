@@ -38,18 +38,18 @@ if [ "$(uname -s)" == "Darwin" ]; then
     # Add to available layouts
     if ! defaults read ~/Library/Preferences/com.apple.HIToolbox.plist AppleEnabledInputSources 2>/dev/null | grep -q "U.S. custom"; then
         defaults write ~/Library/Preferences/com.apple.HIToolbox.plist AppleEnabledInputSources -array-add \
-        '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>16383</integer><key>KeyboardLayout Name</key><string>U.S. custom</string></dict>'
+            '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>16383</integer><key>KeyboardLayout Name</key><string>U.S. custom</string></dict>'
     fi
 
     # Add to selected layouts
     if ! defaults read ~/Library/Preferences/com.apple.HIToolbox.plist AppleSelectedInputSources 2>/dev/null | grep -q "U.S. custom"; then
         defaults write ~/Library/Preferences/com.apple.HIToolbox.plist AppleSelectedInputSources -array-add \
-        '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>16383</integer><key>KeyboardLayout Name</key><string>U.S. custom</string></dict>'
+            '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>16383</integer><key>KeyboardLayout Name</key><string>U.S. custom</string></dict>'
     fi
 
     # Set as current layout
     defaults write ~/Library/Preferences/com.apple.HIToolbox.plist AppleCurrentKeyboardLayoutInputSourceID \
-  "org.unknown.keylayout.UScustom"
+        "org.unknown.keylayout.UScustom"
 
     # Force update
     killall SystemUIServer

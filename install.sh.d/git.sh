@@ -2,11 +2,11 @@
 # DEPENDS: cargo riff stow wget
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    if ! brew ls --versions git >/dev/null ; then
+    if ! brew ls --versions git >/dev/null; then
         brew install git
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
-    if ! dpkg -s git >/dev/null ; then
+    if ! dpkg -s git >/dev/null; then
         sudo apt-get update
         sudo apt-get install --yes git
     fi
@@ -19,7 +19,7 @@ fi
 
 # Extension git-diff-image
 if [ "$(uname -s)" == "Linux" ]; then
-    if ! dpkg -s exiftool imagemagick xdg-utils >/dev/null ; then
+    if ! dpkg -s exiftool imagemagick xdg-utils >/dev/null; then
         sudo apt-get update
         sudo apt-get install --yes exiftool imagemagick xdg-utils
     fi

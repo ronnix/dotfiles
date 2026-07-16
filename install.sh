@@ -57,12 +57,12 @@ is_executed() {
 execute_script() {
     local script="$1"
     local script_name=$(basename "$script")
-    
+
     # Skip if already executed
     if is_executed "$script_name"; then
         return 0
     fi
-    
+
     # Get and execute dependencies first
     local deps=$(get_dependencies "$script")
     if [ -n "$deps" ]; then
@@ -76,7 +76,7 @@ execute_script() {
             fi
         done
     fi
-    
+
     # Execute the script itself
     echo "Installing: $script_name"
     "$script"
@@ -88,16 +88,16 @@ declare -a executed_scripts
 
 # Determine platform-specific module
 case $(uname -s) in
-  Linux)
-    PLATFORM_MODULE="linux"
-    ;;
-  Darwin)
-    PLATFORM_MODULE="macos"
-    ;;
-  *)
-    echo "❌ Unsupported platform: $(uname -s)"
-    exit 1
-    ;;
+    Linux)
+        PLATFORM_MODULE="linux"
+        ;;
+    Darwin)
+        PLATFORM_MODULE="macos"
+        ;;
+    *)
+        echo "❌ Unsupported platform: $(uname -s)"
+        exit 1
+        ;;
 esac
 
 # Parse command line arguments for module selection
@@ -112,13 +112,13 @@ if [ $# -gt 0 ]; then
 
     # Install specific modules (always include platform module first)
     echo "Installing platform module ($PLATFORM_MODULE) and specific modules: $*"
-    
+
     # Install platform module first
     platform_script="install.sh.d/${PLATFORM_MODULE}.sh"
     if [ -f "$platform_script" ]; then
         execute_script "$platform_script"
     fi
-    
+
     # Then install requested modules
     for module in "$@"; do
         execute_script "install.sh.d/${module}.sh"
