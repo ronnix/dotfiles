@@ -161,3 +161,14 @@
 
 [include]
     path = ~/.gitconfig.d/critique
+
+# Written by `gh auth setup-git`, but with gh resolved through PATH rather
+# than the absolute /opt/homebrew path it hardcodes, so this works on Linux
+# too. The empty helper first resets the inherited credential.helper above,
+# so osxkeychain does not take precedence for GitHub URLs.
+[credential "https://github.com"]
+    helper =
+    helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+    helper =
+    helper = !gh auth git-credential
