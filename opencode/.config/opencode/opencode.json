@@ -19,6 +19,12 @@
         },
         "google/gemma-4-26b-a4b-qat": {
           "name": "Gemma 4 26B-A4B"
+        },
+        "google/gemma-4-12b-qat": {
+          "name": "Gemma 4 12B"
+        },
+        "google/gemma-4-e4b": {
+          "name": "Gemma 4 E4B"
         }
       }
     },
