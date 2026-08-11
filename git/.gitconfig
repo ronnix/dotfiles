@@ -11,7 +11,7 @@
     co = checkout
 
     s = switch
-    sm = !git branch | grep master && git switch master || git switch main
+    sm = !git switch $(git default-branch)
     sc = switch --create
 
     # Status
@@ -34,7 +34,7 @@
 
     # Push
     pouche = push
-    pm = push origin master
+    pm = !git push origin $(git default-branch)
     pt = push --tags
 
     # Add
@@ -57,6 +57,10 @@
     br = branch --color
     recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%(refname:short)'
 
+    # Name of the default branch: origin/HEAD when known (refresh it with
+    # `git remote set-head origin -a`), else whichever of main/master exists.
+    default-branch = "!f() { b=$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD); if [ -n \"$b\" ]; then echo \"${b#origin/}\"; return; fi; for c in main master; do if git show-ref --verify --quiet \"refs/heads/$c\" || git show-ref --verify --quiet \"refs/remotes/origin/$c\"; then echo \"$c\"; return; fi; done; echo main; }; f"
+
     # Log
     l = log
     lp = log -p
@@ -67,8 +71,8 @@
     this-month = !sh -c 'git-this-month.sh'
     last-month = !sh -c 'git-last-month.sh'
 
-    # Commits on this branch and not on master
-    lb = log HEAD --not master
+    # Commits on this branch and not on the default branch
+    lb = "!f() { cd -- \"${GIT_PREFIX:-.}\"; git log HEAD --not \"$(git default-branch)\" \"$@\"; }; f"
 
     # Parent commit
     parent = log --pretty=%P -n 1
@@ -95,9 +99,9 @@
     out = !git log $(git rev-parse --abbrev-ref HEAD) --not origin/$(git rev-parse --abbrev-ref HEAD) --
     outp = !git log -p $(git rev-parse --abbrev-ref HEAD) --not origin/$(git rev-parse --abbrev-ref HEAD) --
 
-    # Update master then rebase branch
-    prb = !sh -c 'export PREV=$(git rev-parse --abbrev-ref HEAD) && git co master && git pr && git co $PREV && git rebase master'
-    prbm = !sh -c 'export PREV=$(git rev-parse --abbrev-ref HEAD) && git co master && git pr && git co $PREV && git rebase master && git co master && git rebase $PREV'
+    # Update the default branch then rebase the current branch onto it
+    prb = "!f() { m=$(git default-branch); prev=$(git rev-parse --abbrev-ref HEAD); git co \"$m\" && git pr && git co \"$prev\" && git rebase \"$m\"; }; f"
+    prbm = "!f() { m=$(git default-branch); prev=$(git rev-parse --abbrev-ref HEAD); git co \"$m\" && git pr && git co \"$prev\" && git rebase \"$m\" && git co \"$m\" && git rebase \"$prev\"; }; f"
 
     # Show aliases
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
