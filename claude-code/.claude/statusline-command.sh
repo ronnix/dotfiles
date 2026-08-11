@@ -7,7 +7,7 @@ input=$(cat)
 user=$(whoami)
 dir=$(echo "$input" | jq -r '.workspace.current_dir')
 model=$(echo "$input" | jq -r '.model.display_name')
-model="${model/ context)/)}"   # "Opus 4.8 (1M context)" -> "Opus 4.8 (1M)"
+model="${model/ context)/)}" # "Opus 4.8 (1M context)" -> "Opus 4.8 (1M)"
 ctx_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens // empty')
 ctx_used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 git_branch=$(cd "$dir" 2>/dev/null && git --no-optional-locks -c core.useBuiltinFSMonitor=false -c core.fsmonitor=false branch --show-current 2>/dev/null)
@@ -20,23 +20,23 @@ time=$(date '+%H:%M')
 abbrege_chemin() {
     local chemin="$1" garder_idx="${2:--1}"
     local -a parties
-    IFS='/' read -ra parties <<< "$chemin"
+    IFS='/' read -ra parties <<<"$chemin"
     local n=${#parties[@]}
     local sortie="" i p dots reste
-    for ((i=0; i<n; i++)); do
+    for ((i = 0; i < n; i++)); do
         p="${parties[i]}"
-        if [ $i -eq $((n-1)) ] || [ $i -eq "$garder_idx" ]; then
-            sortie+="$p"                       # composant garde entier
+        if [ $i -eq $((n - 1)) ] || [ $i -eq "$garder_idx" ]; then
+            sortie+="$p" # composant garde entier
         elif [ -z "$p" ]; then
-            :                                  # composant vide (racine /)
+            : # composant vide (racine /)
         else
-            dots="${p%%[!.]*}"                 # points de tete
+            dots="${p%%[!.]*}" # points de tete
             reste="${p#"$dots"}"
-            sortie+="${dots}${reste:0:1}"      # points + 1er caractere
+            sortie+="${dots}${reste:0:1}" # points + 1er caractere
         fi
-        [ $i -lt $((n-1)) ] && sortie+="/"
+        [ $i -lt $((n - 1)) ] && sortie+="/"
     done
-    printf '%s' "${sortie:-/}"                  # garde la racine "/"
+    printf '%s' "${sortie:-/}" # garde la racine "/"
 }
 
 # Racine du depot principal pour garder son nom lisible. En worktree,
@@ -55,15 +55,15 @@ if [ -n "$racine_projet" ]; then
     racine_affiche="${racine_projet/#$HOME/$tilde}"
     # Ne garder l'index que si la racine est bien un prefixe du chemin courant.
     if [ "$chemin_affiche" = "$racine_affiche" ] || [ "${chemin_affiche#"$racine_affiche"/}" != "$chemin_affiche" ]; then
-        IFS='/' read -ra _rp <<< "$racine_affiche"
-        projet_idx=$(( ${#_rp[@]} - 1 ))
+        IFS='/' read -ra _rp <<<"$racine_affiche"
+        projet_idx=$((${#_rp[@]} - 1))
     fi
 fi
 dir_court=$(abbrege_chemin "$chemin_affiche" "$projet_idx")
 
 # Format context window: k-tokens remplis + pourcentage d'utilisation entre parenthèses
 if [ -n "$ctx_tokens" ]; then
-    ctx_k=$(( (ctx_tokens + 500) / 1000 ))  # arrondi au millier le plus proche
+    ctx_k=$(((ctx_tokens + 500) / 1000)) # arrondi au millier le plus proche
     if [ -n "$ctx_used_pct" ]; then
         ctx="${ctx_k}k (${ctx_used_pct}%)"
     else
@@ -74,9 +74,9 @@ else
 fi
 
 # Powerline separators
-sep=$'\xee\x82\xb0'        # U+E0B0  (sharp, between segments)
-sep_right=$'\xee\x82\xb4'  # U+E0B4  (rounded right, trailing edge)
-sep_left=$'\xee\x82\xb6'   # U+E0B6  (rounded left, leading edge)
+sep=$'\xee\x82\xb0'       # U+E0B0  (sharp, between segments)
+sep_right=$'\xee\x82\xb4' # U+E0B4  (rounded right, trailing edge)
+sep_left=$'\xee\x82\xb6'  # U+E0B6  (rounded left, leading edge)
 
 # Catppuccin Mocha colors
 pink="243;139;168"
