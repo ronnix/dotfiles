@@ -89,8 +89,12 @@ dark="17;17;27"
 
 # Leading separator
 printf "\033[38;2;${pink}m${sep_left}\033[0m"
-# User (pink)
-printf "\033[48;2;${pink};38;2;${dark}m 󰀵 %s \033[0m" "$user"
+# User (pink): hide the name when it's me, keep just the macOS icon
+if [ "$user" = "ronan" ]; then
+    printf "\033[48;2;${pink};38;2;${dark}m 󰀵 \033[0m"
+else
+    printf "\033[48;2;${pink};38;2;${dark}m 󰀵 %s \033[0m" "$user"
+fi
 # Pink -> Peach transition
 printf "\033[48;2;${peach};38;2;${pink}m${sep}\033[0m"
 # Directory (peach)
@@ -98,7 +102,7 @@ printf "\033[48;2;${peach};38;2;${dark}m %s \033[0m" "$dir_court"
 # Peach -> Yellow transition
 printf "\033[48;2;${yellow};38;2;${peach}m${sep}\033[0m"
 # Git branch (yellow)
-printf "\033[48;2;${yellow};38;2;${dark}m %s%s \033[0m" "${git_branch}" "${git_dirty}"
+printf "\033[48;2;${yellow};38;2;${dark}m  %s%s \033[0m" "${git_branch}" "${git_dirty}"
 # Yellow -> Green transition
 printf "\033[48;2;${green};38;2;${yellow}m${sep}\033[0m"
 # Model (green)
@@ -110,6 +114,6 @@ printf "\033[48;2;${mauve};38;2;${dark}m 󱤓 %s \033[0m" "$ctx"
 # Mauve -> Lavender transition
 printf "\033[48;2;${lavender};38;2;${mauve}m${sep}\033[0m"
 # Time (lavender)
-printf "\033[48;2;${lavender};38;2;${dark}m  %s \033[0m" "$time"
+printf "\033[48;2;${lavender};38;2;${dark}m  %s \033[0m" "$time"
 # Trailing separator
 printf "\033[38;2;${lavender}m${sep_right}\033[0m"
