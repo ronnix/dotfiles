@@ -5,3 +5,9 @@ indent_style = space
 indent_size = 4
 # Match the existing style: case branches are indented (shfmt -ci)
 switch_case_indent = true
+
+# Git hooks are shell scripts without the .sh extension
+[**/.git-template/hooks/*]
+indent_style = space
+indent_size = 4
+switch_case_indent = true

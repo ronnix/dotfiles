@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# DEPENDS: brew curl
+# DEPENDS: brew curl git stow
 
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions gitleaks >/dev/null; then
@@ -29,3 +29,7 @@ elif [ "$(uname -s)" == "Linux" ]; then
         rm -rf "${TMP}"
     fi
 fi
+
+# Deploys ~/.git-template/hooks/pre-commit, which git copies into every
+# repository created from now on (init.templateDir is set by the git module).
+stow gitleaks

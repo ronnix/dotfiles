@@ -1,0 +1,25 @@
+#!/bin/bash
+# Pre-commit secret scan, via gitleaks. Replaces Talisman since July 2026.
+#
+# Where this file comes from: `git init` and `git clone` copy it into the
+# .git/hooks/ of every new repository, thanks to:
+#     git config --global init.templateDir ~/.git-template
+# The source is ~/.git-template/hooks/pre-commit. Editing it here only affects
+# repositories created from now on -- existing ones hold their own copy, which
+# has to be updated by hand.
+#
+# False positive? Add an allowlist to a .gitleaks.toml at the repository root:
+#     [extend]
+#     useDefault = true
+#     [allowlist]
+#     regexes = ['''^the-non-secret-pattern$''']
+# Prefer that over `git commit --no-verify`, which disables the whole scan.
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+    echo "pre-commit: gitleaks not found, blocking the commit to stay safe." >&2
+    echo "            brew install gitleaks" >&2
+    echo "            (or 'git commit --no-verify' to bypass this one time)" >&2
+    exit 1
+fi
+
+exec gitleaks git --staged --redact --no-banner --verbose --log-level error
