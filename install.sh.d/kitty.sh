@@ -1,13 +1,14 @@
 #!/bin/bash -e
-# DEPENDS: stow wget
+# DEPENDS: stow
 
 if [ "$(uname -s)" == "Linux" ]; then
-    version=0.18.3
-    install_dir=$HOME/.local/kitty.app
-
-    mkdir -p $install_dir
-    wget https://github.com/kovidgoyal/kitty/releases/download/v${version}/kitty-${version}-x86_64.txz -Okitty-${version}.txz
-    tar xJf kitty-${version}.txz --directory=$install_dir
-    rm -f kitty-${version}.txz
+    # kitty reached the Ubuntu archive in 22.04
+    if ! dpkg -s kitty >/dev/null 2>&1; then
+        sudo apt-get install --yes kitty
+    fi
+    # This script used to unpack upstream's tarball into ~/.local/kitty.app,
+    # which .bashrc.d/kitty.sh still puts first in PATH; drop it so the packaged
+    # binary wins
+    rm -rf "$HOME/.local/kitty.app"
     stow kitty
 fi
