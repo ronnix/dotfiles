@@ -1,14 +1,17 @@
 #!/bin/bash -e
 # DEPENDS: brew curl
 
+# shellcheck source=lib/github.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions typst >/dev/null; then
         brew install typst
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
     if ! command -v typst >/dev/null; then
-        TYPST_VERSION=$(curl -sL https://api.github.com/repos/typst/typst/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
-        curl -sL "https://github.com/typst/typst/releases/download/${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" -o /tmp/typst.tar.xz
+        TYPST_VERSION="$(github_latest_tag typst/typst)"
+        curl -fsSL "https://github.com/typst/typst/releases/download/${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" -o /tmp/typst.tar.xz
         tar -xf /tmp/typst.tar.xz -C /tmp
         mkdir -p "$HOME/.local/bin"
         mv /tmp/typst-x86_64-unknown-linux-musl/typst "$HOME/.local/bin/typst"
