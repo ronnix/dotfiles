@@ -1,6 +1,9 @@
 #!/bin/bash -e
 # DEPENDS: curl
 
+# shellcheck source=lib/github.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions moor >/dev/null; then
         brew install moor
@@ -12,7 +15,7 @@ elif [ "$(uname -s)" == "Linux" ]; then
             x86_64) arch=amd64 ;;
             aarch64) arch=arm64 ;;
         esac
-        version="$(curl -fsSL https://api.github.com/repos/walles/moor/releases/latest | grep -m1 tag_name | cut -d'"' -f4)"
+        version="$(github_latest_tag walles/moor)"
         curl -fsSL "https://github.com/walles/moor/releases/download/${version}/moor-${version}-linux-${arch}" -o /tmp/moor
         sudo install -m 0755 /tmp/moor /usr/local/bin/moor
         rm /tmp/moor

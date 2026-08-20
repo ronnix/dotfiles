@@ -1,6 +1,9 @@
 #!/bin/bash -e
 # DEPENDS: brew curl git stow
 
+# shellcheck source=lib/github.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions gitleaks >/dev/null; then
         brew install gitleaks
@@ -17,8 +20,8 @@ elif [ "$(uname -s)" == "Linux" ]; then
                 exit 1
                 ;;
         esac
-        VERSION="$(curl -fsSL https://api.github.com/repos/gitleaks/gitleaks/releases/latest |
-            grep -oP '"tag_name":\s*"v\K[^"]+')"
+        TAG="$(github_latest_tag gitleaks/gitleaks)"
+        VERSION="${TAG#v}"
         TARBALL="gitleaks_${VERSION}_linux_${ARCH}.tar.gz"
         URL="https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/${TARBALL}"
         TMP="$(mktemp -d)"

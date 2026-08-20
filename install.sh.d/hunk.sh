@@ -1,6 +1,9 @@
 #!/bin/bash -e
 # DEPENDS: brew curl stow
 
+# shellcheck source=lib/github.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+
 # Expose the bundled hunk-review skill through skillshare so it reaches every
 # configured agent. skillshare only discovers real directories, so we create one
 # holding a symlink to the bundled SKILL.md — the file stays in sync across hunk
@@ -34,8 +37,8 @@ elif [ "$(uname -s)" == "Linux" ]; then
                 exit 1
                 ;;
         esac
-        VERSION="$(curl -fsSL https://api.github.com/repos/modem-dev/hunk/releases/latest |
-            grep -oP '"tag_name":\s*"v\K[^"]+')"
+        TAG="$(github_latest_tag modem-dev/hunk)"
+        VERSION="${TAG#v}"
         TARBALL="hunkdiff-linux-${ARCH}.tar.gz"
         URL="https://github.com/modem-dev/hunk/releases/download/v${VERSION}/${TARBALL}"
         TMP="$(mktemp -d)"
