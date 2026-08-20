@@ -1,5 +1,8 @@
 #!/bin/bash -e
-# DEPENDS: python stow wget
+# DEPENDS: curl python stow wget
+
+# shellcheck source=lib/github.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
 
 set -o errexit
 
@@ -28,15 +31,17 @@ if [ "$(uname -s)" == "Linux" ]; then
     #sudo apt install --yes ./rofi_1.5.4-1_amd64.deb
     #rm -f ./rofi_1.5.4-1_amd64.deb
 
-    # Install rofimoji
-    VERSION=6.5.0
+    # Install rofimoji (its tags carry no leading v)
+    VERSION="$(github_latest_tag fdw/rofimoji)"
     if [[ $(rofimoji --version) != "rofimoji $VERSION" ]]; then
-        wget https://github.com/fdw/rofimoji/releases/download/$VERSION/rofimoji-$VERSION-py3-none-any.whl
-        pipx install rofimoji-$VERSION-py3-none-any.whl
-        rm -f ./rofimoji-$VERSION-py3-none-any.whl
+        wget "https://github.com/fdw/rofimoji/releases/download/${VERSION}/rofimoji-${VERSION}-py3-none-any.whl"
+        pipx install "rofimoji-${VERSION}-py3-none-any.whl"
+        rm -f "./rofimoji-${VERSION}-py3-none-any.whl"
     fi
 
-    # Install picom compositing manager
+    # Install picom compositing manager. Kept as a source build on purpose: the
+    # Ubuntu package trails far behind (9 on 22.04, 10.2 on 24.04), so apt would
+    # be a downgrade from the version pinned here.
     if [ ! -f /usr/local/bin/picom ]; then
         VERSION=12.4
         wget -O picom.tar.gz https://github.com/yshui/picom/archive/v$VERSION.tar.gz
