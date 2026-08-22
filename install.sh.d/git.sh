@@ -13,8 +13,8 @@ elif [ "$(uname -s)" == "Linux" ]; then
 fi
 
 # Extension git-absorb
-if ! [ -f $HOME/.cargo/bin/git-absorb ]; then
-    [ -f $HOME/.cargo/bin/cargo install git-absorb
+if ! [ -f "$HOME/.cargo/bin/git-absorb" ]; then
+    cargo install git-absorb
 fi
 
 # Extension git-diff-image
