@@ -1,12 +1,15 @@
 #!/bin/bash -e
 # DEPENDS: curl claude-code stow
 
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
+
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions rtk >/dev/null; then
         brew install rtk
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
-    if ! command -v rtk >/dev/null; then
+    if needs_install command -v rtk; then
         curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
     fi
 fi

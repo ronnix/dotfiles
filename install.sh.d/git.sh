@@ -1,6 +1,9 @@
 #!/bin/bash -e
 # DEPENDS: cargo riff stow wget
 
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
+
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions git >/dev/null; then
         brew install git
@@ -13,7 +16,7 @@ elif [ "$(uname -s)" == "Linux" ]; then
 fi
 
 # Extension git-absorb
-if ! [ -f "$HOME/.cargo/bin/git-absorb" ]; then
+if needs_install test -f "$HOME/.cargo/bin/git-absorb"; then
     cargo install git-absorb
 fi
 

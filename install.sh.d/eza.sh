@@ -3,15 +3,15 @@
 
 # eza succeeds exa, whose last release dates back to April 2021.
 
-# shellcheck source=lib/github.sh
-source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions eza >/dev/null; then
         brew install eza
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
-    if ! command -v eza >/dev/null; then
+    if needs_install command -v eza; then
         # eza only reached the Ubuntu archive in 24.04 (Mint 22), so fall back
         # to the upstream binary on older releases
         if apt-cache show eza >/dev/null 2>&1; then

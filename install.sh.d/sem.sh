@@ -1,6 +1,9 @@
 #!/bin/bash -e
 # DEPENDS: brew cargo curl
 
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
+
 # cf. https://ataraxy-labs.github.io/sem/
 # Semantic layer on top of Git: entity-level diff, blame, impact and log.
 # Note: we deliberately do not run `sem setup`, which would hijack `git diff`.
@@ -30,7 +33,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
     mkdir -p "$HOME/.local/bin"
     ln -sf /opt/homebrew/opt/sem-cli/bin/sem "$HOME/.local/bin/sem"
 elif [ "$(uname -s)" == "Linux" ]; then
-    if ! command -v sem >/dev/null; then
+    if needs_install command -v sem; then
         cargo install --git https://github.com/Ataraxy-Labs/sem sem-cli
     fi
 fi

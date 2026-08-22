@@ -1,8 +1,8 @@
 #!/bin/bash -e
 # DEPENDS: brew curl stow
 
-# shellcheck source=lib/github.sh
-source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 
 # Expose the bundled hunk-review skill through skillshare so it reaches every
 # configured agent. skillshare only discovers real directories, so we create one
@@ -28,7 +28,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
     expose_hunk_skill "$(brew --prefix hunk)/libexec/skills/hunk-review/SKILL.md"
 elif [ "$(uname -s)" == "Linux" ]; then
     # Hunk has no apt repository, so install the standalone binary from GitHub releases
-    if ! command -v hunk >/dev/null; then
+    if needs_install command -v hunk; then
         case "$(uname -m)" in
             x86_64) ARCH="x64" ;;
             aarch64 | arm64) ARCH="arm64" ;;

@@ -1,15 +1,15 @@
 #!/bin/bash -e
 # DEPENDS: curl
 
-# shellcheck source=lib/github.sh
-source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions moor >/dev/null; then
         brew install moor
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
-    if ! command -v moor >/dev/null; then
+    if needs_install command -v moor; then
         arch="$(uname -m)"
         case "$arch" in
             x86_64) arch=amd64 ;;

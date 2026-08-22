@@ -1,8 +1,8 @@
 #!/bin/bash -e
 # DEPENDS: brew curl
 
-# shellcheck source=lib/github.sh
-source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions supabase >/dev/null; then
@@ -10,7 +10,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
     # Supabase has no apt repository, so install the .deb from GitHub releases
-    if ! command -v supabase >/dev/null; then
+    if needs_install command -v supabase; then
         ARCH="$(dpkg --print-architecture)"
         TAG="$(github_latest_tag supabase/cli)"
         VERSION="${TAG#v}"

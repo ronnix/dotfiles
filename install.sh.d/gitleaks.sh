@@ -1,8 +1,8 @@
 #!/bin/bash -e
 # DEPENDS: brew curl git stow
 
-# shellcheck source=lib/github.sh
-source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 
 if [ "$(uname -s)" == "Darwin" ]; then
     if ! brew ls --versions gitleaks >/dev/null; then
@@ -10,7 +10,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
     # Gitleaks has no apt repository, so install the tarball from GitHub releases
-    if ! command -v gitleaks >/dev/null; then
+    if needs_install command -v gitleaks; then
         case "$(dpkg --print-architecture)" in
             amd64) ARCH="x64" ;;
             arm64) ARCH="arm64" ;;

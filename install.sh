@@ -2,15 +2,22 @@
 
 # Function to show usage
 show_usage() {
-    echo "Usage: $0 [module1] [module2] ..."
+    echo "Usage: $0 [--update] [module1] [module2] ..."
     echo "       $0 --list"
     echo ""
     echo "If no modules are specified, all modules will be installed."
     echo "Use --list to see available modules."
     echo ""
+    echo "By default a module that is already installed is left alone. --update"
+    echo "refreshes what no package manager owns: binaries downloaded from"
+    echo "upstream, sources built locally, cargo crates, fonts. Whatever brew or"
+    echo "apt installed stays their business, so upgrade it with brew upgrade or"
+    echo "apt upgrade."
+    echo ""
     echo "Examples:"
     echo "  $0                    # Install all modules"
     echo "  $0 zsh python         # Install only zsh and python (with dependencies)"
+    echo "  $0 --update hunk      # Refresh hunk even though it is installed"
     echo "  $0 --list             # List available modules"
 }
 
@@ -28,14 +35,33 @@ list_modules() {
     done
 }
 
-# Parse command line arguments early
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    show_usage
-    exit 0
-elif [ "$1" = "--list" ] || [ "$1" = "-l" ]; then
-    list_modules
-    exit 0
-fi
+# Parse the options, leaving the module names in "$@"
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --help | -h)
+            show_usage
+            exit 0
+            ;;
+        --list | -l)
+            list_modules
+            exit 0
+            ;;
+        --update | -u)
+            # Read by needs_install() in install.sh.d/lib/common.sh
+            export DOTFILES_UPDATE=1
+            shift
+            ;;
+        -*)
+            echo "❌ Unknown option: $1"
+            echo ""
+            show_usage
+            exit 1
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
 
 #
 # Extra install steps with dependency management

@@ -1,8 +1,8 @@
 #!/bin/bash -e
 # DEPENDS: curl stow
 
-# shellcheck source=lib/github.sh
-source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 
 # 1) Install nvm
 NVM_VERSION="$(github_latest_tag nvm-sh/nvm)"

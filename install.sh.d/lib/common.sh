@@ -1,9 +1,22 @@
 # shellcheck shell=bash
 #
-# Helpers shared by the install scripts that fetch artifacts from GitHub
-# releases. Source it with:
+# Helpers shared by the install scripts. Source it with:
 #
-#     source "$(dirname "${BASH_SOURCE[0]}")/lib/github.sh"
+#     source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
+
+# Answer whether an install step should run.
+#
+# Takes the check the script would otherwise have run on its own, e.g.
+# `needs_install command -v hunk`, `needs_install test -f /usr/local/bin/picom`.
+# The step runs when that check fails, i.e. when the tool is missing — and
+# always when install.sh was called with --update, so that installs no package
+# manager owns can be refreshed on demand.
+needs_install() {
+    if [ -n "${DOTFILES_UPDATE:-}" ]; then
+        return 0
+    fi
+    ! "$@" >/dev/null 2>&1
+}
 
 # Print the tag of a repository's latest release, e.g. `v1.2.3`.
 #
