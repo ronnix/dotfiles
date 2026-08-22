@@ -25,6 +25,10 @@ if [ "$(uname -s)" == "Darwin" ]; then
         TMP="$(mktemp -d)"
         curl -fsSL "https://github.com/${REPO}/releases/download/v${VERSION}/${DMG}" -o "${TMP}/${DMG}"
         hdiutil attach -nobrowse -quiet -mountpoint "${TMP}/mnt" "${TMP}/${DMG}"
+        # ditto merges into an existing bundle, leaving files from the previous
+        # version inside Contents/ and breaking the code signature; only the
+        # --update path ever gets here with the app already in place
+        rm -rf "/Applications/Unsloth.app"
         ditto "${TMP}/mnt/Unsloth.app" "/Applications/Unsloth.app"
         hdiutil detach -quiet "${TMP}/mnt"
         rm -rf "${TMP}"

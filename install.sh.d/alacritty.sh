@@ -1,13 +1,16 @@
 #!/bin/bash -e
 # DEPENDS: cargo curl git stow wget
 
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
+
 VERSION=0.14.0
 
 # Alacritty has no Ubuntu package worth using, so build it from source. macOS is
 # deliberately left out: `brew install --cask alacritty` covers it the day the
 # need comes back, and this block would otherwise compile Alacritty on every run
 # before failing on the Linux-shaped install steps below.
-if [ "$(uname -s)" == "Linux" ] && ! command -v alacritty >/dev/null; then
+if [ "$(uname -s)" == "Linux" ] && needs_install command -v alacritty; then
     rm -f alacritty.tar.gz
     wget https://github.com/alacritty/alacritty/archive/refs/tags/v$VERSION.tar.gz -O alacritty.tar.gz
     tar xzf alacritty.tar.gz
