@@ -59,6 +59,33 @@ fi
 stow module_name  # symlink config files
 ```
 
+### Install or update
+
+A module that is already installed is left alone: guard every install step.
+`./install.sh --update` overrides that, but only where it can do something no
+package manager can. Pick the guard accordingly:
+
+- **brew or apt owns the tool** — guard with `brew ls --versions`, `brew list
+  --cask --versions` or `dpkg -s`, and leave it at that. Updating is
+  `brew upgrade` / `apt upgrade`, not this script's job.
+- **the script owns the install** (binary fetched from upstream, source build,
+  `cargo install`, a wheel, a font, a vendor `curl | sh`) — source
+  `lib/common.sh` and guard with `needs_install`, which also fires under
+  `--update`:
+
+```bash
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
+
+if needs_install command -v tool; then    # or: needs_install test -f /path
+    ...
+fi
+```
+
+`lib/common.sh` also provides `github_latest_tag <owner>/<repo>`, which returns
+the raw tag of the latest release. Prefer it to a hardcoded version, and to
+querying api.github.com, which rate-limits unauthenticated calls.
+
 ### Shell Configuration
 
 Shell RC files (`~/.bashrc`, `~/.zshrc`) source all files in their `.d` subdirectories, allowing modular shell configuration per tool.
