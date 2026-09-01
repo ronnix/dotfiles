@@ -2,7 +2,7 @@
 # DEPENDS: stow brew curl
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    if ! brew ls --versions 1password-cli >/dev/null; then
+    if ! brew list --cask --versions 1password-cli >/dev/null; then
         brew install 1password-cli
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
