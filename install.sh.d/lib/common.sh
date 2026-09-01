@@ -27,6 +27,24 @@ needs_install() {
 # A repository without a published release redirects to /releases and still
 # answers 200, so check that we landed on a tag instead of trusting the last
 # path component.
+# Print the name of a release asset, matched on the tail of its name, e.g.
+# `github_release_asset unslothai/unsloth v0.1.804-beta -Ubuntu.deb`.
+#
+# Upstreams do rename their assets — Unsloth dropped the version from theirs
+# between two consecutive releases — so match the stable part of the name
+# instead of rebuilding it. The expanded_assets page lists the names without
+# going through the rate-limited API.
+github_release_asset() {
+    local repo="$1" tag="$2" suffix="$3" name
+    name="$(curl -fsSL "https://github.com/${repo}/releases/expanded_assets/${tag}" |
+        grep -oE "[A-Za-z0-9._-]+${suffix}" | head -1)"
+    if [ -z "${name}" ]; then
+        echo "${repo}: no ${tag} asset whose name ends in ${suffix}" >&2
+        return 1
+    fi
+    echo "${name}"
+}
+
 github_latest_tag() {
     local repo="$1" url
     url="$(curl -fsSLI -o /dev/null -w '%{url_effective}' "https://github.com/${repo}/releases/latest")"
