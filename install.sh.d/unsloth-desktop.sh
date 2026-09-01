@@ -9,13 +9,13 @@ source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 
 if [ "$(uname -s)" == "Darwin" ]; then
     if needs_install brew list --cask --versions unsloth; then
-        # An earlier version of this script installed the DMG by hand, before
-        # the cask existed; drop that copy so brew can take the app over
-        if ! brew list --cask --versions unsloth >/dev/null 2>&1 &&
-            [ -d "/Applications/Unsloth.app" ]; then
-            rm -rf "/Applications/Unsloth.app"
-        fi
-        brew install --cask unsloth
+        # The app may already be in /Applications: installed by hand before the
+        # cask existed, or kept current by its own updater. --adopt lets brew
+        # take it over in place rather than refusing to overwrite it. Adoption
+        # needs the versions to match, and the self-updater can run ahead of the
+        # cask, so leave the app alone when it fails: it updates itself anyway.
+        brew install --cask --adopt unsloth ||
+            echo "unsloth-desktop: leaving the app in place, to its own updater" >&2
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
     # No apt repository, so install the .deb published on GitHub releases.
