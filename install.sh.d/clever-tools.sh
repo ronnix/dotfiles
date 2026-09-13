@@ -2,6 +2,7 @@
 # DEPENDS: curl
 
 if [ "$(uname -s)" == "Darwin" ]; then
+    brew trust --formula clevercloud/tap/clever-tools
     if ! brew ls --versions clever-tools >/dev/null; then
         brew install CleverCloud/homebrew-tap/clever-tools
     fi

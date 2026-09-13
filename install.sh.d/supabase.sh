@@ -5,6 +5,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 
 if [ "$(uname -s)" == "Darwin" ]; then
+    brew trust --formula supabase/tap/supabase
     if ! brew ls --versions supabase >/dev/null; then
         brew install supabase/tap/supabase
     fi

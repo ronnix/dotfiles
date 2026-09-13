@@ -2,6 +2,7 @@
 # DEPENDS: brew curl
 
 if [ "$(uname -s)" == "Darwin" ]; then
+    brew trust --formula getsentry/tools/sentry-cli
     if ! brew ls --versions sentry-cli >/dev/null; then
         brew install getsentry/tools/sentry-cli
     fi

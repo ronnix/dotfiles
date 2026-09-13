@@ -3,6 +3,7 @@
 
 if [ "$(uname -s)" == "Darwin" ]; then
     brew tap yazinsai/openoats https://github.com/yazinsai/OpenOats
+    brew trust --cask yazinsai/openoats/openoats
     brew install --cask yazinsai/openoats/openoats
 
     # Pull the embedding model used by OpenOats
