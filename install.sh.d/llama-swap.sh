@@ -2,7 +2,8 @@
 # DEPENDS: brew llama-cpp
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    brew tap mostlygeek/llama-swap
     brew trust --formula mostlygeek/llama-swap/llama-swap
-    brew install llama-swap
+    if ! brew ls --versions llama-swap >/dev/null; then
+        brew install mostlygeek/llama-swap/llama-swap
+    fi
 fi
