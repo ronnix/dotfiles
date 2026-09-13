@@ -5,6 +5,15 @@
 # ~/.zprofile, so there is no need to add it again here.)
 typeset -gU path fpath
 
+# Extra completion definitions from zsh-users/zsh-completions: Homebrew package
+# on macOS, git checkout on Linux (see install.sh.d/zsh-completions.sh).
+# Use the keg path rather than $HOMEBREW_PREFIX/share/zsh-completions: compaudit
+# also checks the parent directory, and Homebrew keeps share/ group-writable.
+for dir in "${HOMEBREW_PREFIX:+$HOMEBREW_PREFIX/opt/zsh-completions/share/zsh-completions}" ~/.local/share/zsh-completions/src; do
+    [[ -d $dir ]] && fpath=("$dir" $fpath)
+done
+unset dir
+
 # Init completion
 autoload -Uz compinit && compinit
 

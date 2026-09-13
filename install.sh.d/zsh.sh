@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# DEPENDS: coreutils starship stow
+# DEPENDS: coreutils starship stow zsh-completions
 
 #
 # Rename existing dotfiles to avoid stow conflicts
