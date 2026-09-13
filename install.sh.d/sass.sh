@@ -1,13 +1,11 @@
 #!/bin/bash -e
-# DEPENDS: brew curl
+# DEPENDS: brew curl dart
 
 # shellcheck source=lib/common.sh
 source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 
 if [ "$(uname -s)" == "Darwin" ]; then
-    # The formula builds from source with the Dart SDK from the dart-lang tap,
-    # which brew pulls in as a build dependency, so both need to be trusted
-    brew trust --formula dart-lang/dart/dart
+    # Built from source with the Dart SDK, hence the dependency on dart
     brew trust --formula sass/sass/sass
     if ! brew ls --versions sass >/dev/null; then
         brew install sass/sass/sass
