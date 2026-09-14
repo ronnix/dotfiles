@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# DEPENDS: brew ollama
+# DEPENDS: brew
 
 if [ "$(uname -s)" == "Darwin" ]; then
     brew tap yazinsai/openoats https://github.com/yazinsai/OpenOats
@@ -8,8 +8,9 @@ if [ "$(uname -s)" == "Darwin" ]; then
         brew install --cask yazinsai/openoats/openoats
     fi
 
-    # Pull the embedding model used by OpenOats
-    if ! ollama list 2>/dev/null | grep -q '^nomic-embed-text'; then
+    # Pull the embedding model used by OpenOats. Ollama is no longer installed
+    # by this repository, so skip the pull when it is not around.
+    if command -v ollama >/dev/null && ! ollama list 2>/dev/null | grep -q '^nomic-embed-text'; then
         ollama pull nomic-embed-text
     fi
 
