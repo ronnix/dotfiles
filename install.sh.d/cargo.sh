@@ -1,17 +1,24 @@
 #!/bin/bash -e
 # DEPENDS: curl stow
 
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
+
 # Install using rustup
-if ! [ -f $HOME/.cargo/bin/cargo ]; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y
+if needs_install test -f "$HOME/.cargo/bin/cargo"; then
+    if [ -x "$HOME/.cargo/bin/rustup" ]; then
+        # Already installed and --update asked for a refresh. rustup-init
+        # refuses to run over an existing installation, so use rustup itself.
+        "$HOME/.cargo/bin/rustup" update stable
+    else
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y
+    fi
 fi
 
 # Install config files
 stow cargo
 
 # Load environment variables
-source $HOME/.bashrc.d/cargo.sh
+source "$HOME/.bashrc.d/cargo.sh"
 
-# Make sure we have the latest version
 rustup override set stable
-rustup update stable

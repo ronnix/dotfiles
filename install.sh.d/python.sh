@@ -1,6 +1,9 @@
 #!/bin/bash -e
 # DEPENDS: pyenv stow xcode
 
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
+
 source ~/.bashrc.d/pyenv.sh
 
 # MacOS
@@ -29,26 +32,26 @@ pyenv global $VERSIONS
 pyenv rehash
 
 #
-# Upgrade pip
+# Bootstrap pip and pipx. They only move forward under --update: upgrading them
+# on every run is what the install-or-update convention rules out.
 #
-python3 -m pip install --upgrade pip
-
-#
-# Install pipx
-#
-python3 -m pip install pipx
+if needs_install command -v pipx; then
+    python3 -m pip install --upgrade pip
+    python3 -m pip install pipx
+fi
 
 #
 # Install some tools system-wide with pipx
 #
 export PATH=$HOME/.local/bin:$PATH
-python3 -m pipx install black[d]
-python3 -m pipx install flake8
-python3 -m pipx install isort
-python3 -m pipx install mypy
-python3 -m pipx install tox
-python3 -m pipx install virtualenv
-python3 -m pipx install virtualenvwrapper
+for PKG in "black[d]" flake8 isort mypy tox virtualenv virtualenvwrapper; do
+    # pipx names the venv after the package, without the extras
+    if needs_install test -d "$HOME/.local/pipx/venvs/${PKG%%\[*}"; then
+        # --force, so that --update reinstalls: a plain `pipx install` leaves an
+        # existing venv alone and still exits 0
+        python3 -m pipx install --force "$PKG"
+    fi
+done
 
 #
 # Install config files

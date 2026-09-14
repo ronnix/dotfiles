@@ -1,7 +1,13 @@
 #!/bin/bash -e
 # DEPENDS: stow jq
 
-curl -fsSL https://claude.ai/install.sh | bash
+# shellcheck source=lib/common.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
+
+# The installer symlinks ~/.local/bin/claude to the version it unpacks
+if needs_install test -x "$HOME/.local/bin/claude"; then
+    curl -fsSL https://claude.ai/install.sh | bash
+fi
 
 stow claude-code
 
