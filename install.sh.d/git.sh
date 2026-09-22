@@ -22,16 +22,19 @@ fi
 
 # Extension git-diff-image
 if [ "$(uname -s)" == "Linux" ]; then
-    if ! dpkg -s exiftool imagemagick xdg-utils >/dev/null; then
+    if ! dpkg -s libimage-exiftool-perl imagemagick xdg-utils >/dev/null 2>&1; then
         sudo apt-get update
-        sudo apt-get install --yes exiftool imagemagick xdg-utils
+        sudo apt-get install --yes libimage-exiftool-perl imagemagick xdg-utils
     fi
 fi
 SHA1=f12098b2b9b9f56f205f8e9ca8435796a0fdc1fc
 DEST=~/.local/bin
-mkdir -p ${DEST}
-wget https://raw.githubusercontent.com/ewanmellor/git-diff-image/${SHA1}/diff-image -O ${DEST}/diff-image
-wget https://raw.githubusercontent.com/ewanmellor/git-diff-image/${SHA1}/git_diff_image -O ${DEST}/git_diff_image
+if needs_install test -f "${DEST}/git_diff_image"; then
+    mkdir -p ${DEST}
+    wget https://raw.githubusercontent.com/ewanmellor/git-diff-image/${SHA1}/diff-image -O ${DEST}/diff-image
+    wget https://raw.githubusercontent.com/ewanmellor/git-diff-image/${SHA1}/git_diff_image -O ${DEST}/git_diff_image
+    chmod +x ${DEST}/diff-image ${DEST}/git_diff_image
+fi
 
 # Install config files
 stow git
